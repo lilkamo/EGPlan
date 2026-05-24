@@ -159,7 +159,7 @@ html,body{height:100%;overflow:hidden;background:var(--cream);font-family:'DM Sa
 .week-nav{display:flex;align-items:center;justify-content:space-between;background:var(--white);border:1px solid var(--border);border-radius:var(--radius-sm);padding:10px 14px;margin-bottom:10px}
 .week-nav-btn{background:none;border:none;cursor:pointer;font-size:18px;color:var(--green);padding:0 6px;font-weight:600}
 .week-nav span{font-size:14px;font-weight:600;color:var(--ink)}
-.week-tabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:8px;-webkit-overflow-scrolling:touch}
+.week-tabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;margin-bottom:6px;-webkit-overflow-scrolling:touch}
 .week-tabs::-webkit-scrollbar{display:none}
 .week-tab{flex-shrink:0;padding:6px 14px;border-radius:var(--radius-pill);border:1.5px solid var(--border-strong);font-size:12px;font-weight:600;background:var(--white);color:var(--ink-light);cursor:pointer}
 .week-tab.active{background:var(--green);color:var(--white);border-color:var(--green)}
@@ -171,15 +171,26 @@ html,body{height:100%;overflow:hidden;background:var(--cream);font-family:'DM Sa
 .log-slot{padding:10px 16px;border-bottom:1px solid var(--border)}
 .log-slot:last-child{border-bottom:none}
 .log-slot-label{font-size:11px;font-weight:600;color:var(--ink-pale);text-transform:uppercase;letter-spacing:0.4px;margin-bottom:6px}
-.log-entry{display:flex;align-items:center;justify-content:space-between;background:var(--cream);border-radius:var(--radius-sm);padding:8px 10px;margin-bottom:5px}
-.log-entry-name{font-size:13px;font-weight:500;color:var(--ink)}
-.log-entry-cals{font-size:11px;color:var(--green);font-weight:600}
-.log-entry-del{background:none;border:none;cursor:pointer;color:var(--ink-pale);font-size:16px;padding:0 2px;line-height:1}
+.log-entry{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-sm);margin-bottom:6px;overflow:hidden}
+.log-entry-header{display:flex;align-items:center;gap:6px;padding:9px 10px;cursor:pointer}
+.log-entry-dot{width:8px;height:8px;border-radius:50%;background:var(--lime-dark);flex-shrink:0}
+.log-entry-name{font-size:13px;font-weight:600;color:var(--ink);flex:1}
+.log-entry-cals{font-size:11px;color:var(--green);font-weight:600;white-space:nowrap}
+.log-entry-actions{display:flex;align-items:center;gap:2px}
+.log-entry-del{background:none;border:none;cursor:pointer;color:var(--ink-pale);font-size:16px;padding:0 3px;line-height:1}
+.log-entry-body{display:none;border-top:1px solid var(--border);padding:10px 12px;background:var(--cream)}
+.log-entry.open .log-entry-body{display:block}
+.log-entry-ing{font-size:12px;color:var(--ink-light);line-height:1.7;margin-bottom:8px}
+.log-entry-ing strong{font-size:10px;font-weight:600;color:var(--ink-pale);text-transform:uppercase;letter-spacing:0.4px;display:block;margin-bottom:3px}
+.log-entry-edit-area{margin-top:6px}
+.log-entry-edit-area textarea{width:100%;border:1px solid var(--border-strong);border-radius:var(--radius-sm);padding:7px 9px;font-size:12px;font-family:"DM Sans",sans-serif;color:var(--ink);background:var(--white);resize:none;height:60px}
+.log-entry-edit-row{display:flex;gap:6px;margin-top:6px}
+.log-entry-edit-row input{flex:1;border:1px solid var(--border-strong);border-radius:var(--radius-sm);padding:6px 9px;font-size:12px;font-family:"DM Sans",sans-serif;color:var(--ink);background:var(--white)}
+.log-entry-save-btn{background:var(--green);color:white;border:none;border-radius:var(--radius-sm);padding:6px 12px;font-size:12px;font-weight:600;cursor:pointer;font-family:"DM Sans",sans-serif;flex-shrink:0}
 .add-meal-btn{display:flex;align-items:center;gap:6px;background:none;border:1.5px dashed var(--border-strong);border-radius:var(--radius-sm);padding:7px 12px;font-size:12px;color:var(--green);font-weight:600;cursor:pointer;width:100%;margin-top:4px}
-.copy-week-bar{display:flex;align-items:center;gap:8px;background:var(--white);border:1px solid var(--border);border-radius:var(--radius-sm);padding:10px 14px;margin-bottom:10px;flex-wrap:wrap}
-.copy-week-bar span{font-size:12px;color:var(--ink-light);flex-shrink:0}
-.copy-week-bar select{flex:1;min-width:80px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);padding:5px 8px;font-size:12px;background:var(--white);color:var(--ink);font-family:'DM Sans',sans-serif}
-.copy-week-bar button{background:var(--green);color:var(--white);border:none;border-radius:var(--radius-sm);padding:6px 12px;font-size:12px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;flex-shrink:0}
+.copy-entry-btn{background:none;border:none;cursor:pointer;color:var(--ink-pale);padding:0 2px;line-height:1;font-size:14px;display:flex;align-items:center}
+.copy-entry-btn svg{width:13px;height:13px;stroke:var(--ink-pale);fill:none;stroke-width:2}
+.copy-entry-btn:active svg{stroke:var(--green)}
 
 /* Shopping list */
 .shop-section{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:10px}
@@ -192,9 +203,12 @@ html,body{height:100%;overflow:hidden;background:var(--cream);font-family:'DM Sa
 .shop-empty{font-size:13px;color:var(--ink-pale);padding:8px 0;font-style:italic}
 
 /* Modal */
-.modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:100;display:none;align-items:flex-end;justify-content:center}
+.modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:100;display:none;align-items:center;justify-content:center;padding:16px}
 .modal-backdrop.open{display:flex}
-.modal{background:var(--white);border-radius:var(--radius) var(--radius) 0 0;padding:20px 16px 32px;width:100%;max-width:480px;max-height:80vh;overflow-y:auto}
+.modal{background:var(--white);border-radius:var(--radius);padding:20px 16px 24px;width:100%;max-width:420px;max-height:88vh;overflow-y:auto;box-shadow:0 8px 40px rgba(0,0,0,0.18)}
+/* Meal idea copy button */
+.idea-copy-btn{display:inline-flex;align-items:center;gap:5px;margin-top:7px;padding:5px 10px;background:var(--green-pale);border:1px solid var(--border-strong);border-radius:var(--radius-pill);font-size:11px;font-weight:600;color:var(--lime-text);cursor:pointer;font-family:'DM Sans',sans-serif}
+.idea-copy-btn svg{width:12px;height:12px;stroke:var(--lime-text);fill:none;stroke-width:2.2;flex-shrink:0}
 .modal h3{font-size:16px;font-weight:600;color:var(--ink);margin-bottom:14px}
 .modal label{display:block;font-size:12px;font-weight:600;color:var(--ink-light);margin-bottom:4px;margin-top:12px}
 .modal input,.modal select,.modal textarea{width:100%;border:1px solid var(--border-strong);border-radius:var(--radius-sm);padding:9px 12px;font-size:14px;background:var(--white);color:var(--ink);font-family:'DM Sans',sans-serif}
@@ -207,8 +221,41 @@ html,body{height:100%;overflow:hidden;background:var(--cream);font-family:'DM Sa
 <body>
 <div class="app">
 <div class="top-bar">
-  <h1>GlowUp <span>Glutes</span></h1>
-  <p>8-Week Home Program · 3x/week</p>
+  <div style="display:flex;align-items:flex-start;justify-content:space-between">
+    <div>
+      <h1>GlowUp <span>Glutes</span></h1>
+      <p>8-Week Home Program · 3x/week</p>
+    </div>
+    <div id="water-widget" style="display:none;flex-direction:column;align-items:flex-end;gap:2px">
+      <div style="display:flex;align-items:center;gap:6px">
+        <button onclick="resetWater()" style="background:none;border:none;cursor:pointer;color:var(--ink-pale);font-size:11px;padding:2px 4px;font-family:'DM Sans',sans-serif;line-height:1" title="Reset">Reset</button>
+        <span id="water-count" style="font-size:11px;color:var(--ink-light);font-weight:600;min-width:56px;text-align:right">0 oz</span>
+        <button onclick="addWater()" style="background:var(--green);border:none;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0" aria-label="Add cup">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+      </div>
+      <div id="water-graphic" style="position:relative;width:44px;height:52px;cursor:pointer" onclick="addWater()" title="Tap to add a cup">
+        <svg id="water-svg" viewBox="0 0 44 52" width="44" height="52" xmlns="http://www.w3.org/2000/svg">
+          <!-- Cup outline -->
+          <path d="M8 6 L6 46 Q6 50 10 50 L34 50 Q38 50 38 46 L36 6 Z" fill="white" stroke="#c8e86a" stroke-width="2"/>
+          <!-- Water fill — clipped -->
+          <defs>
+            <clipPath id="cupclip">
+              <path d="M8.5 6 L6.5 46 Q6.5 49.5 10 49.5 L34 49.5 Q37.5 49.5 37.5 46 L35.5 6 Z"/>
+            </clipPath>
+          </defs>
+          <rect id="water-fill-rect" x="0" y="50" width="44" height="44" fill="#5bb8f5" clip-path="url(#cupclip)" opacity="0.85"/>
+          <!-- Shine -->
+          <rect x="12" y="10" width="4" height="18" rx="2" fill="white" opacity="0.35" clip-path="url(#cupclip)"/>
+          <!-- Cup rim -->
+          <rect x="6" y="4" width="32" height="4" rx="2" fill="#c8e86a"/>
+          <!-- Handle -->
+          <path d="M38 16 Q48 16 48 26 Q48 36 38 36" fill="none" stroke="#c8e86a" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <div id="water-pct" style="position:absolute;bottom:6px;left:0;right:0;text-align:center;font-size:9px;font-weight:700;color:#1a5c99;line-height:1;pointer-events:none"></div>
+      </div>
+    </div>
+  </div>
 </div>
 <div class="content">
 
@@ -431,12 +478,13 @@ html,body{height:100%;overflow:hidden;background:var(--cream);font-family:'DM Sa
 
 <!-- NUTRITION -->
 <div id="screen-nutrition" class="screen">
-  <div style="display:flex;gap:8px;margin-bottom:10px">
-    <button onclick="switchNutTab('overview',this)" class="phase-tab active" style="flex:1">Overview</button>
-    <button onclick="switchNutTab('meals',this)" class="phase-tab" style="flex:1">Meal Ideas</button>
-    <button onclick="switchNutTab('log',this)" class="phase-tab" style="flex:1">Meal Log</button>
-    <button onclick="switchNutTab('shop',this)" class="phase-tab" style="flex:1">Shopping</button>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:6px;margin-bottom:10px">
+    <button onclick="switchNutTab('overview',this)" class="phase-tab active" style="padding:7px 4px;font-size:11px;text-align:center">Overview</button>
+    <button onclick="switchNutTab('meals',this)" class="phase-tab" style="padding:7px 4px;font-size:11px;text-align:center">Meal Ideas</button>
+    <button onclick="switchNutTab('log',this)" class="phase-tab" style="padding:7px 4px;font-size:11px;text-align:center">Meal Log</button>
+    <button onclick="switchNutTab('shop',this)" class="phase-tab" style="padding:7px 4px;font-size:11px;text-align:center">Shopping List</button>
   </div>
+  <div style="height:4px"></div>
 
   <!-- Overview -->
   <div id="nut-overview" class="phase-content active">
@@ -488,37 +536,37 @@ html,body{height:100%;overflow:hidden;background:var(--cream);font-family:'DM Sa
           <div class="meal-option-top"><h5>Scrambled Eggs + Toast</h5><span class="meal-tag tag-meat">🥚 Eggs</span></div>
           <p>3 eggs scrambled, 2 slices whole wheat toast, sliced avocado</p>
           <p class="meal-macros">~480 cal · 28g protein · 38g carbs · 20g fat</p>
-          <div class="meal-ingredients"><strong>Ingredients</strong><br>3 large eggs · 2 slices whole wheat bread · ½ avocado · salt, pepper, olive oil spray</div>
+          <div class="meal-ingredients"><strong>Ingredients</strong><br>3 large eggs · 2 slices whole wheat bread · ½ avocado · salt, pepper, olive oil spray<button class="idea-copy-btn" onclick="openIdeaCopyModal(this,event)"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add to my log</button></div>
         </div>
         <div class="meal-option" onclick="toggleMealDetail(this)">
           <div class="meal-option-top"><h5>Greek Yogurt Protein Bowl</h5><span class="meal-tag tag-nomeat">🌿 No-Meat</span></div>
           <p>Full-fat Greek yogurt, mixed berries, granola, drizzle of honey, 1 scoop protein powder stirred in</p>
           <p class="meal-macros">~450 cal · 35g protein · 50g carbs · 10g fat</p>
-          <div class="meal-ingredients"><strong>Ingredients</strong><br>1 cup full-fat Greek yogurt · ½ cup mixed berries · ¼ cup granola · 1 tsp honey · 1 scoop vanilla protein powder</div>
+          <div class="meal-ingredients"><strong>Ingredients</strong><br>1 cup full-fat Greek yogurt · ½ cup mixed berries · ¼ cup granola · 1 tsp honey · 1 scoop vanilla protein powder<button class="idea-copy-btn" onclick="openIdeaCopyModal(this,event)"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add to my log</button></div>
         </div>
         <div class="meal-option" onclick="toggleMealDetail(this)">
           <div class="meal-option-top"><h5>Cottage Cheese Pancakes</h5><span class="meal-tag tag-nomeat">🌿 No-Meat</span></div>
           <p>Blended cottage cheese + eggs + oats + banana. High protein, naturally sweet</p>
           <p class="meal-macros">~430 cal · 32g protein · 45g carbs · 12g fat</p>
-          <div class="meal-ingredients"><strong>Ingredients</strong><br>½ cup cottage cheese · 2 eggs · ½ cup rolled oats · 1 banana · pinch of cinnamon · maple syrup to serve</div>
+          <div class="meal-ingredients"><strong>Ingredients</strong><br>½ cup cottage cheese · 2 eggs · ½ cup rolled oats · 1 banana · pinch of cinnamon · maple syrup to serve<button class="idea-copy-btn" onclick="openIdeaCopyModal(this,event)"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add to my log</button></div>
         </div>
         <div class="meal-option" onclick="toggleMealDetail(this)">
           <div class="meal-option-top"><h5>Turkey Bacon Egg Wrap</h5><span class="meal-tag tag-meat">🥩 Meat</span></div>
           <p>Whole wheat tortilla, 2 turkey bacon strips, 2 scrambled eggs, spinach, hot sauce</p>
           <p class="meal-macros">~480 cal · 34g protein · 38g carbs · 14g fat</p>
-          <div class="meal-ingredients"><strong>Ingredients</strong><br>1 large whole wheat tortilla · 2 strips turkey bacon · 2 eggs · handful fresh spinach · hot sauce · olive oil spray</div>
+          <div class="meal-ingredients"><strong>Ingredients</strong><br>1 large whole wheat tortilla · 2 strips turkey bacon · 2 eggs · handful fresh spinach · hot sauce · olive oil spray<button class="idea-copy-btn" onclick="openIdeaCopyModal(this,event)"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add to my log</button></div>
         </div>
         <div class="meal-option" onclick="toggleMealDetail(this)">
           <div class="meal-option-top"><h5>Overnight Oats (High Protein)</h5><span class="meal-tag tag-nomeat">🌿 No-Meat</span></div>
           <p>Oats soaked overnight in milk with protein powder, chia seeds, peanut butter</p>
           <p class="meal-macros">~500 cal · 32g protein · 55g carbs · 15g fat</p>
-          <div class="meal-ingredients"><strong>Ingredients</strong><br>½ cup rolled oats · ¾ cup milk (any) · 1 scoop protein powder · 1 tbsp chia seeds · 1 tbsp peanut butter · drizzle of maple syrup</div>
+          <div class="meal-ingredients"><strong>Ingredients</strong><br>½ cup rolled oats · ¾ cup milk (any) · 1 scoop protein powder · 1 tbsp chia seeds · 1 tbsp peanut butter · drizzle of maple syrup<button class="idea-copy-btn" onclick="openIdeaCopyModal(this,event)"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add to my log</button></div>
         </div>
         <div class="meal-option" onclick="toggleMealDetail(this)">
           <div class="meal-option-top"><h5>Tofu Scramble + Toast</h5><span class="meal-tag tag-nomeat">🌿 Vegan</span></div>
           <p>Firm tofu crumbled and cooked with turmeric, nutritional yeast, peppers, spinach</p>
           <p class="meal-macros">~420 cal · 28g protein · 35g carbs · 16g fat</p>
-          <div class="meal-ingredients"><strong>Ingredients</strong><br>200g firm tofu (crumbled) · ½ tsp turmeric · 1 tbsp nutritional yeast · ½ bell pepper · handful spinach · 2 slices whole wheat toast · olive oil</div>
+          <div class="meal-ingredients"><strong>Ingredients</strong><br>200g firm tofu (crumbled) · ½ tsp turmeric · 1 tbsp nutritional yeast · ½ bell pepper · handful spinach · 2 slices whole wheat toast · olive oil<button class="idea-copy-btn" onclick="openIdeaCopyModal(this,event)"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add to my log</button></div>
         </div>
       </div>
     </div>
@@ -533,37 +581,37 @@ html,body{height:100%;overflow:hidden;background:var(--cream);font-family:'DM Sa
           <div class="meal-option-top"><h5>Grilled Chicken Wrap</h5><span class="meal-tag tag-meat">🥩 Meat</span></div>
           <p>4 oz grilled chicken, whole wheat tortilla, romaine, tomato, Greek yogurt dressing</p>
           <p class="meal-macros">~500 cal · 38g protein · 45g carbs · 12g fat</p>
-          <div class="meal-ingredients"><strong>Ingredients</strong><br>4 oz chicken breast · 1 whole wheat tortilla · romaine lettuce · 1 tomato · 2 tbsp Greek yogurt · garlic powder, salt, pepper, lemon</div>
+          <div class="meal-ingredients"><strong>Ingredients</strong><br>4 oz chicken breast · 1 whole wheat tortilla · romaine lettuce · 1 tomato · 2 tbsp Greek yogurt · garlic powder, salt, pepper, lemon<button class="idea-copy-btn" onclick="openIdeaCopyModal(this,event)"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add to my log</button></div>
         </div>
         <div class="meal-option" onclick="toggleMealDetail(this)">
           <div class="meal-option-top"><h5>Lentil + Roasted Veggie Bowl</h5><span class="meal-tag tag-nomeat">🌿 Vegan</span></div>
           <p>Green lentils, roasted sweet potato, zucchini, chickpeas, tahini dressing, fresh lemon</p>
           <p class="meal-macros">~520 cal · 25g protein · 72g carbs · 14g fat</p>
-          <div class="meal-ingredients"><strong>Ingredients</strong><br>½ cup dry lentils (cooked) · 1 cup roasted sweet potato cubes · ½ zucchini · ½ cup canned chickpeas · 2 tbsp tahini · lemon juice · olive oil · cumin, paprika</div>
+          <div class="meal-ingredients"><strong>Ingredients</strong><br>½ cup dry lentils (cooked) · 1 cup roasted sweet potato cubes · ½ zucchini · ½ cup canned chickpeas · 2 tbsp tahini · lemon juice · olive oil · cumin, paprika<button class="idea-copy-btn" onclick="openIdeaCopyModal(this,event)"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add to my log</button></div>
         </div>
         <div class="meal-option" onclick="toggleMealDetail(this)">
           <div class="meal-option-top"><h5>Tuna + Rice Bowl</h5><span class="meal-tag tag-meat">🐟 Fish</span></div>
           <p>Canned tuna over white rice, edamame, cucumber, sesame dressing, pickled ginger</p>
           <p class="meal-macros">~520 cal · 40g protein · 58g carbs · 10g fat</p>
-          <div class="meal-ingredients"><strong>Ingredients</strong><br>1 can tuna in water · 1 cup cooked white rice · ½ cup shelled edamame · ½ cucumber · 1 tbsp soy sauce · 1 tsp sesame oil · pickled ginger</div>
+          <div class="meal-ingredients"><strong>Ingredients</strong><br>1 can tuna in water · 1 cup cooked white rice · ½ cup shelled edamame · ½ cucumber · 1 tbsp soy sauce · 1 tsp sesame oil · pickled ginger<button class="idea-copy-btn" onclick="openIdeaCopyModal(this,event)"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add to my log</button></div>
         </div>
         <div class="meal-option" onclick="toggleMealDetail(this)">
           <div class="meal-option-top"><h5>Black Bean + Quinoa Bowl</h5><span class="meal-tag tag-nomeat">🌿 Vegan</span></div>
           <p>Quinoa base, black beans, corn, avocado, salsa, lime. Complete protein from quinoa + beans</p>
           <p class="meal-macros">~510 cal · 24g protein · 68g carbs · 14g fat</p>
-          <div class="meal-ingredients"><strong>Ingredients</strong><br>½ cup dry quinoa (cooked) · ½ cup canned black beans · ½ cup corn · ½ avocado · ¼ cup salsa · lime juice · cumin, chili powder</div>
+          <div class="meal-ingredients"><strong>Ingredients</strong><br>½ cup dry quinoa (cooked) · ½ cup canned black beans · ½ cup corn · ½ avocado · ¼ cup salsa · lime juice · cumin, chili powder<button class="idea-copy-btn" onclick="openIdeaCopyModal(this,event)"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add to my log</button></div>
         </div>
         <div class="meal-option" onclick="toggleMealDetail(this)">
           <div class="meal-option-top"><h5>Ground Turkey Rice Bowl</h5><span class="meal-tag tag-meat">🥩 Meat</span></div>
           <p>Seasoned ground turkey over brown rice with steamed broccoli, teriyaki drizzle</p>
           <p class="meal-macros">~530 cal · 42g protein · 52g carbs · 14g fat</p>
-          <div class="meal-ingredients"><strong>Ingredients</strong><br>4 oz lean ground turkey · 1 cup cooked brown rice · 1 cup broccoli florets · 1 tbsp teriyaki sauce · garlic, ginger, sesame oil</div>
+          <div class="meal-ingredients"><strong>Ingredients</strong><br>4 oz lean ground turkey · 1 cup cooked brown rice · 1 cup broccoli florets · 1 tbsp teriyaki sauce · garlic, ginger, sesame oil<button class="idea-copy-btn" onclick="openIdeaCopyModal(this,event)"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add to my log</button></div>
         </div>
         <div class="meal-option" onclick="toggleMealDetail(this)">
           <div class="meal-option-top"><h5>Egg + Hummus Grain Bowl</h5><span class="meal-tag tag-nomeat">🌿 No-Meat</span></div>
           <p>Hard-boiled eggs on farro or bulgur, big scoop hummus, roasted red peppers, cucumber, lemon</p>
           <p class="meal-macros">~490 cal · 28g protein · 52g carbs · 18g fat</p>
-          <div class="meal-ingredients"><strong>Ingredients</strong><br>2 hard-boiled eggs · ¾ cup cooked farro · 3 tbsp hummus · roasted red peppers · ½ cucumber · lemon juice · olive oil · za'atar</div>
+          <div class="meal-ingredients"><strong>Ingredients</strong><br>2 hard-boiled eggs · ¾ cup cooked farro · 3 tbsp hummus · roasted red peppers · ½ cucumber · lemon juice · olive oil · za'atar<button class="idea-copy-btn" onclick="openIdeaCopyModal(this,event)"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add to my log</button></div>
         </div>
       </div>
     </div>
@@ -578,37 +626,37 @@ html,body{height:100%;overflow:hidden;background:var(--cream);font-family:'DM Sa
           <div class="meal-option-top"><h5>Baked Salmon + Sweet Potato</h5><span class="meal-tag tag-meat">🐟 Fish</span></div>
           <p>6 oz salmon fillet, 7 oz baked sweet potato, roasted asparagus, olive oil drizzle</p>
           <p class="meal-macros">~580 cal · 40g protein · 55g carbs · 18g fat</p>
-          <div class="meal-ingredients"><strong>Ingredients</strong><br>6 oz salmon fillet · 1 medium sweet potato · 1 bunch asparagus · 1 tbsp olive oil · garlic, lemon, salt, pepper · optional: dill</div>
+          <div class="meal-ingredients"><strong>Ingredients</strong><br>6 oz salmon fillet · 1 medium sweet potato · 1 bunch asparagus · 1 tbsp olive oil · garlic, lemon, salt, pepper · optional: dill<button class="idea-copy-btn" onclick="openIdeaCopyModal(this,event)"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add to my log</button></div>
         </div>
         <div class="meal-option" onclick="toggleMealDetail(this)">
           <div class="meal-option-top"><h5>Tempeh Stir-Fry + Rice</h5><span class="meal-tag tag-nomeat">🌿 Vegan</span></div>
           <p>Pan-fried tempeh, broccoli, snap peas, carrots, ginger-soy sauce, brown rice</p>
           <p class="meal-macros">~560 cal · 32g protein · 65g carbs · 18g fat</p>
-          <div class="meal-ingredients"><strong>Ingredients</strong><br>6 oz tempeh (cubed) · 1 cup broccoli · ½ cup snap peas · 1 carrot · 2 tbsp soy sauce · 1 tsp sesame oil · fresh ginger + garlic · 1 cup cooked brown rice</div>
+          <div class="meal-ingredients"><strong>Ingredients</strong><br>6 oz tempeh (cubed) · 1 cup broccoli · ½ cup snap peas · 1 carrot · 2 tbsp soy sauce · 1 tsp sesame oil · fresh ginger + garlic · 1 cup cooked brown rice<button class="idea-copy-btn" onclick="openIdeaCopyModal(this,event)"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add to my log</button></div>
         </div>
         <div class="meal-option" onclick="toggleMealDetail(this)">
           <div class="meal-option-top"><h5>Chicken + Roasted Veggies</h5><span class="meal-tag tag-meat">🥩 Meat</span></div>
           <p>Baked chicken breast, roasted broccoli and sweet potato, light olive oil, garlic</p>
           <p class="meal-macros">~530 cal · 45g protein · 48g carbs · 14g fat</p>
-          <div class="meal-ingredients"><strong>Ingredients</strong><br>6 oz chicken breast · 1 cup broccoli florets · 1 medium sweet potato · 1 tbsp olive oil · garlic powder, paprika, Italian seasoning, salt</div>
+          <div class="meal-ingredients"><strong>Ingredients</strong><br>6 oz chicken breast · 1 cup broccoli florets · 1 medium sweet potato · 1 tbsp olive oil · garlic powder, paprika, Italian seasoning, salt<button class="idea-copy-btn" onclick="openIdeaCopyModal(this,event)"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add to my log</button></div>
         </div>
         <div class="meal-option" onclick="toggleMealDetail(this)">
           <div class="meal-option-top"><h5>Chickpea + Spinach Curry</h5><span class="meal-tag tag-nomeat">🌿 Vegan</span></div>
           <p>Canned chickpeas in a spiced tomato-coconut sauce, wilted spinach, basmati rice</p>
           <p class="meal-macros">~570 cal · 22g protein · 78g carbs · 16g fat</p>
-          <div class="meal-ingredients"><strong>Ingredients</strong><br>1 can chickpeas · 1 can diced tomatoes · ¼ can coconut milk · 2 cups spinach · 1 cup cooked basmati rice · cumin, garam masala, turmeric, ginger, garlic, onion</div>
+          <div class="meal-ingredients"><strong>Ingredients</strong><br>1 can chickpeas · 1 can diced tomatoes · ¼ can coconut milk · 2 cups spinach · 1 cup cooked basmati rice · cumin, garam masala, turmeric, ginger, garlic, onion<button class="idea-copy-btn" onclick="openIdeaCopyModal(this,event)"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add to my log</button></div>
         </div>
         <div class="meal-option" onclick="toggleMealDetail(this)">
           <div class="meal-option-top"><h5>Ground Turkey Pasta</h5><span class="meal-tag tag-meat">🥩 Meat</span></div>
           <p>Lean ground turkey, whole wheat pasta, marinara, zucchini, parmesan</p>
           <p class="meal-macros">~570 cal · 42g protein · 60g carbs · 14g fat</p>
-          <div class="meal-ingredients"><strong>Ingredients</strong><br>4 oz lean ground turkey · 2 oz dry whole wheat pasta · ½ cup marinara · ½ zucchini · 1 tbsp parmesan · garlic, onion, Italian seasoning</div>
+          <div class="meal-ingredients"><strong>Ingredients</strong><br>4 oz lean ground turkey · 2 oz dry whole wheat pasta · ½ cup marinara · ½ zucchini · 1 tbsp parmesan · garlic, onion, Italian seasoning<button class="idea-copy-btn" onclick="openIdeaCopyModal(this,event)"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add to my log</button></div>
         </div>
         <div class="meal-option" onclick="toggleMealDetail(this)">
           <div class="meal-option-top"><h5>Tofu + Edamame Noodle Bowl</h5><span class="meal-tag tag-nomeat">🌿 Vegan</span></div>
           <p>Baked crispy tofu, edamame, soba noodles, cucumber, peanut-sesame dressing</p>
           <p class="meal-macros">~540 cal · 30g protein · 62g carbs · 20g fat</p>
-          <div class="meal-ingredients"><strong>Ingredients</strong><br>6 oz extra-firm tofu (baked) · ½ cup shelled edamame · 2 oz dry soba noodles · ½ cucumber · 2 tbsp peanut butter · 1 tbsp soy sauce · sesame oil, rice vinegar, garlic, chili flakes</div>
+          <div class="meal-ingredients"><strong>Ingredients</strong><br>6 oz extra-firm tofu (baked) · ½ cup shelled edamame · 2 oz dry soba noodles · ½ cucumber · 2 tbsp peanut butter · 1 tbsp soy sauce · sesame oil, rice vinegar, garlic, chili flakes<button class="idea-copy-btn" onclick="openIdeaCopyModal(this,event)"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add to my log</button></div>
         </div>
       </div>
     </div>
@@ -623,37 +671,37 @@ html,body{height:100%;overflow:hidden;background:var(--cream);font-family:'DM Sa
           <div class="meal-option-top"><h5>Greek Yogurt + Berries</h5><span class="meal-tag tag-nomeat">🌿 No-Meat</span></div>
           <p>Full-fat Greek yogurt with mixed berries and a drizzle of honey</p>
           <p class="meal-macros">~200 cal · 15g protein · 22g carbs · 5g fat</p>
-          <div class="meal-ingredients"><strong>Ingredients</strong><br>5 oz full-fat Greek yogurt · ½ cup mixed berries · 1 tsp honey</div>
+          <div class="meal-ingredients"><strong>Ingredients</strong><br>5 oz full-fat Greek yogurt · ½ cup mixed berries · 1 tsp honey<button class="idea-copy-btn" onclick="openIdeaCopyModal(this,event)"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add to my log</button></div>
         </div>
         <div class="meal-option" onclick="toggleMealDetail(this)">
           <div class="meal-option-top"><h5>Cottage Cheese + Pineapple</h5><span class="meal-tag tag-nomeat">🌿 No-Meat</span></div>
           <p>High protein, naturally sweet. Great post-workout or evening snack</p>
           <p class="meal-macros">~180 cal · 18g protein · 18g carbs · 3g fat</p>
-          <div class="meal-ingredients"><strong>Ingredients</strong><br>½ cup low-fat cottage cheese · ½ cup diced fresh or canned pineapple</div>
+          <div class="meal-ingredients"><strong>Ingredients</strong><br>½ cup low-fat cottage cheese · ½ cup diced fresh or canned pineapple<button class="idea-copy-btn" onclick="openIdeaCopyModal(this,event)"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add to my log</button></div>
         </div>
         <div class="meal-option" onclick="toggleMealDetail(this)">
           <div class="meal-option-top"><h5>Hard-Boiled Eggs + Apple</h5><span class="meal-tag tag-nomeat">🌿 No-Meat</span></div>
           <p>2 hard-boiled eggs and a medium apple. Protein + fiber + natural sugar = solid energy</p>
           <p class="meal-macros">~230 cal · 14g protein · 25g carbs · 10g fat</p>
-          <div class="meal-ingredients"><strong>Ingredients</strong><br>2 hard-boiled eggs · 1 medium apple · pinch of sea salt</div>
+          <div class="meal-ingredients"><strong>Ingredients</strong><br>2 hard-boiled eggs · 1 medium apple · pinch of sea salt<button class="idea-copy-btn" onclick="openIdeaCopyModal(this,event)"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add to my log</button></div>
         </div>
         <div class="meal-option" onclick="toggleMealDetail(this)">
           <div class="meal-option-top"><h5>Turkey Roll-Ups</h5><span class="meal-tag tag-meat">🥩 Meat</span></div>
           <p>Sliced deli turkey rolled with cream cheese and cucumber strips. Easy, portable</p>
           <p class="meal-macros">~200 cal · 22g protein · 5g carbs · 10g fat</p>
-          <div class="meal-ingredients"><strong>Ingredients</strong><br>3 oz deli turkey slices · 1 tbsp light cream cheese · ¼ cucumber (sliced into strips)</div>
+          <div class="meal-ingredients"><strong>Ingredients</strong><br>3 oz deli turkey slices · 1 tbsp light cream cheese · ¼ cucumber (sliced into strips)<button class="idea-copy-btn" onclick="openIdeaCopyModal(this,event)"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add to my log</button></div>
         </div>
         <div class="meal-option" onclick="toggleMealDetail(this)">
           <div class="meal-option-top"><h5>Edamame + Soy Salt</h5><span class="meal-tag tag-nomeat">🌿 Vegan</span></div>
           <p>Frozen edamame steamed in 3 minutes. One of the best complete plant proteins</p>
           <p class="meal-macros">~190 cal · 17g protein · 14g carbs · 8g fat</p>
-          <div class="meal-ingredients"><strong>Ingredients</strong><br>1 cup shelled frozen edamame (steamed) · pinch of sea salt · optional: chili flakes</div>
+          <div class="meal-ingredients"><strong>Ingredients</strong><br>1 cup shelled frozen edamame (steamed) · pinch of sea salt · optional: chili flakes<button class="idea-copy-btn" onclick="openIdeaCopyModal(this,event)"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add to my log</button></div>
         </div>
         <div class="meal-option" onclick="toggleMealDetail(this)">
           <div class="meal-option-top"><h5>Protein Shake + Banana</h5><span class="meal-tag tag-nomeat">🌿 No-Meat</span></div>
           <p>Any protein powder mixed with milk or water, paired with a banana. Classic post-workout</p>
           <p class="meal-macros">~280 cal · 28g protein · 32g carbs · 4g fat</p>
-          <div class="meal-ingredients"><strong>Ingredients</strong><br>1 scoop protein powder · 1 cup milk or oat milk · 1 medium banana</div>
+          <div class="meal-ingredients"><strong>Ingredients</strong><br>1 scoop protein powder · 1 cup milk or oat milk · 1 medium banana<button class="idea-copy-btn" onclick="openIdeaCopyModal(this,event)"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add to my log</button></div>
         </div>
       </div>
     </div>
@@ -662,11 +710,6 @@ html,body{height:100%;overflow:hidden;background:var(--cream);font-family:'DM Sa
   <!-- Meal Log -->
   <div id="nut-log" class="phase-content">
     <div class="week-tabs" id="log-week-tabs"></div>
-    <div class="copy-week-bar">
-      <span>Copy week to:</span>
-      <select id="copy-to-select"></select>
-      <button onclick="copyWeek()">Copy</button>
-    </div>
     <div id="log-body"></div>
     <button class="add-meal-btn" onclick="openAddDayModal()" style="margin-bottom:10px">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
@@ -677,10 +720,7 @@ html,body{height:100%;overflow:hidden;background:var(--cream);font-family:'DM Sa
   <!-- Shopping List -->
   <div id="nut-shop" class="phase-content">
     <div class="week-tabs" id="shop-week-tabs"></div>
-    <div style="display:flex;gap:8px;margin-bottom:10px">
-      <button onclick="generateShopList()" class="btn-primary" style="flex:1;padding:10px;font-size:13px">Generate shopping list</button>
-      <button onclick="clearChecked()" class="btn-secondary" style="flex:1;padding:10px;font-size:13px">Clear checked</button>
-    </div>
+    <button onclick="generateShopList()" class="btn-primary" style="width:100%;padding:10px;font-size:13px;margin-bottom:10px">Generate shopping list</button>
     <div id="shop-list-body"></div>
   </div>
 </div>
@@ -764,6 +804,58 @@ html,body{height:100%;overflow:hidden;background:var(--cream);font-family:'DM Sa
 </nav>
 </div>
 
+<!-- ADD IDEA TO LOG MODAL -->
+<div class="modal-backdrop" id="idea-modal-backdrop">
+  <div class="modal">
+    <h3>Add to my meal log</h3>
+    <p style="font-size:13px;color:var(--ink-light);margin-bottom:4px;font-weight:500" id="idea-modal-name"></p>
+    <label>Week</label>
+    <select id="idea-week"></select>
+    <label>Day</label>
+    <select id="idea-day">
+      <option>Monday</option><option>Tuesday</option><option>Wednesday</option>
+      <option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option>
+    </select>
+    <label>Meal slot</label>
+    <select id="idea-slot">
+      <option value="breakfast">Breakfast</option>
+      <option value="lunch">Lunch</option>
+      <option value="dinner">Dinner</option>
+      <option value="snack">Snack</option>
+    </select>
+    <div class="modal-actions">
+      <button class="btn-secondary" onclick="closeIdeaModal()">Cancel</button>
+      <button class="btn-primary" onclick="confirmAddIdea()">Add to log</button>
+    </div>
+  </div>
+</div>
+
+<!-- COPY MEAL MODAL -->
+<div class="modal-backdrop" id="copy-modal-backdrop">
+  <div class="modal">
+    <h3>Copy meal to another week</h3>
+    <p style="font-size:13px;color:var(--ink-light);margin-bottom:4px" id="copy-meal-desc"></p>
+    <label>Copy to week</label>
+    <select id="copy-meal-week"></select>
+    <label>Copy to day</label>
+    <select id="copy-meal-day">
+      <option>Monday</option><option>Tuesday</option><option>Wednesday</option>
+      <option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option>
+    </select>
+    <label>Meal slot</label>
+    <select id="copy-meal-slot">
+      <option value="breakfast">Breakfast</option>
+      <option value="lunch">Lunch</option>
+      <option value="dinner">Dinner</option>
+      <option value="snack">Snack</option>
+    </select>
+    <div class="modal-actions">
+      <button class="btn-secondary" onclick="closeCopyModal()">Cancel</button>
+      <button class="btn-primary" onclick="confirmCopyMeal()">Copy</button>
+    </div>
+  </div>
+</div>
+
 <!-- ADD MEAL MODAL -->
 <div class="modal-backdrop" id="modal-backdrop">
   <div class="modal">
@@ -820,6 +912,9 @@ function showScreen(name,btn){
   document.getElementById('screen-'+name).classList.add('active');
   btn.classList.add('active');
   document.querySelector('.content').scrollTop=0;
+  // Show water widget only on nutrition screen
+  const ww=document.getElementById('water-widget');
+  if(ww) ww.style.display=name==='nutrition'?'flex':'none';
 }
 function switchPhase(id,btn){
   document.querySelectorAll('.phase-content').forEach(p=>p.classList.remove('active'));
@@ -866,51 +961,69 @@ function renderWeekTabs(containerId, current, setter){
   }
 }
 function renderLogWeekTabs(){
-  renderWeekTabs('log-week-tabs',currentLogWeek,(w)=>{currentLogWeek=w;renderLogBody();updateCopySelect();});
+  renderWeekTabs('log-week-tabs',currentLogWeek,(w)=>{currentLogWeek=w;renderLogBody();});
   renderLogBody();
-  updateCopySelect();
 }
 function renderShopWeekTabs(){
   renderWeekTabs('shop-week-tabs',currentShopWeek,(w)=>{currentShopWeek=w;renderShopList();});
 }
-function updateCopySelect(){
-  const sel=document.getElementById('copy-to-select');
-  sel.innerHTML='';
-  for(let w=1;w<=WEEKS;w++){
-    if(w===currentLogWeek) continue;
-    const o=document.createElement('option');
-    o.value=w;o.textContent='Week '+w;
-    sel.appendChild(o);
-  }
-}
 
 // ── Log body ────────────────────────────────────────────
 function getLogKey(week,day,slot){return week+'|'+day+'|'+slot;}
+
+function buildLogEntry(key,e,i){
+  const entry=document.createElement('div');
+  entry.className='log-entry';
+  const ingHtml=e.ing?'<div class="log-entry-ing"><strong>Ingredients</strong>'+e.ing+'</div>':'<div class="log-entry-ing" style="color:var(--ink-pale);font-style:italic;font-size:12px">No ingredients saved — expand to add</div>';
+  entry.innerHTML=
+    '<div class="log-entry-header">'+
+    '<span class="log-entry-dot"></span>'+
+    '<span class="log-entry-name">'+e.name+'</span>'+
+    (e.cals?'<span class="log-entry-cals">'+e.cals+' cal</span>':'')+
+    '<div class="log-entry-actions">'+
+    '<button class="copy-entry-btn" title="Copy to another week" onclick="openCopyMealModal(\''+key+'\','+i+',event)">'+
+    '<svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>'+
+    '</button>'+
+    '<button class="log-entry-del" onclick="deleteEntry(\''+key+'\','+i+',event)" title="Delete">×</button>'+
+    '</div></div>'+
+    '<div class="log-entry-body">'+
+    ingHtml+
+    '<div class="log-entry-edit-area">'+
+    '<div style="font-size:10px;font-weight:600;color:var(--ink-pale);text-transform:uppercase;letter-spacing:0.4px;margin-bottom:4px;margin-top:8px">Edit ingredients</div>'+
+    '<textarea id="ing_'+key+'_'+i+'" onchange="saveInlineEdit(\''+key+'\','+i+',\'ing\',this.value)">'+(e.ing||'')+'</textarea>'+
+    '<div class="log-entry-edit-row">'+
+    '<input type="number" placeholder="Calories" id="cal_'+key+'_'+i+'" value="'+(e.cals||'')+'" onchange="saveInlineEdit(\''+key+'\','+i+',\'cals\',this.value)">'+
+    '<button class="log-entry-save-btn" onclick="flashSaved(this)">Save</button>'+
+    '</div></div></div>';
+  entry.querySelector('.log-entry-header').onclick=(evt)=>{
+    if(evt.target.closest('.log-entry-actions')) return;
+    entry.classList.toggle('open');
+  };
+  return entry;
+}
+
 function renderLogBody(){
   const body=document.getElementById('log-body');
   body.innerHTML='';
   DAYS.forEach(day=>{
     const card=document.createElement('div');
     card.className='meal-log-day';
+    let dayTotal=0;
+    SLOTS.forEach(s=>{dayTotal+=(DB.logs[getLogKey(currentLogWeek,day,s)]||[]).length;});
     const hdr=document.createElement('div');
     hdr.className='meal-log-day-header';
-    hdr.innerHTML='<h4>'+day+'</h4><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9a9a7a" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>';
+    hdr.innerHTML='<h4>'+day+(dayTotal?'<span style="font-size:10px;font-weight:600;background:var(--lime);color:var(--lime-text);border-radius:100px;padding:1px 7px;margin-left:8px">'+dayTotal+'</span>':'')+'</h4><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9a9a7a" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>';
     hdr.onclick=()=>card.classList.toggle('open');
     const bdy=document.createElement('div');
     bdy.className='meal-log-day-body';
     SLOTS.forEach(slot=>{
+      const key=getLogKey(currentLogWeek,day,slot);
+      const entries=(DB.logs[key]||[]);
       const slotDiv=document.createElement('div');
       slotDiv.className='log-slot';
       slotDiv.innerHTML='<div class="log-slot-label">'+SLOT_LABELS[slot]+'</div>';
-      const key=getLogKey(currentLogWeek,day,slot);
-      const entries=(DB.logs[key]||[]);
       entries.forEach((e,i)=>{
-        const row=document.createElement('div');
-        row.className='log-entry';
-        row.innerHTML='<span class="log-entry-name">'+e.name+'</span>'
-          +(e.cals?'<span class="log-entry-cals">'+e.cals+' cal</span>':'')
-          +'<button class="log-entry-del" onclick="deleteEntry(\''+key+'\','+i+')">×</button>';
-        slotDiv.appendChild(row);
+        slotDiv.appendChild(buildLogEntry(key,e,i));
       });
       const addBtn=document.createElement('button');
       addBtn.className='add-meal-btn';
@@ -925,11 +1038,146 @@ function renderLogBody(){
   });
 }
 
-function deleteEntry(key,idx){
+function saveInlineEdit(key,idx,field,val){
+  if(!DB.logs[key]||!DB.logs[key][idx]) return;
+  if(field==='cals') DB.logs[key][idx].cals=val?parseInt(val):null;
+  else DB.logs[key][idx][field]=val;
+  save(DB);
+}
+function flashSaved(btn){
+  const orig=btn.textContent;
+  btn.textContent='Saved ✓';
+  btn.style.background='var(--lime-deep)';
+  setTimeout(()=>{btn.textContent='Save';btn.style.background='var(--green)';},1400);
+}
+
+function deleteEntry(key,idx,evt){
+  if(evt) evt.stopPropagation();
   if(!DB.logs[key]) return;
+  // Find and remove just this entry element, keep day open
+  const entryEl = evt && evt.target ? evt.target.closest('.log-entry') : null;
   DB.logs[key].splice(idx,1);
   save(DB);
+  if(entryEl){
+    // Re-index subsequent delete/copy buttons in same slot to avoid stale idx
+    const slotEl=entryEl.closest('.log-slot');
+    entryEl.style.opacity='0';
+    entryEl.style.transition='opacity 0.2s';
+    setTimeout(()=>{
+      entryEl.remove();
+      // Re-render just the slot contents to fix indices
+      if(slotEl){
+        const parts=key.split('|');
+        const day=parts[1]; const slot=parts[2];
+        const entries=DB.logs[key]||[];
+        // Remove existing entry cards (not the add button)
+        slotEl.querySelectorAll('.log-entry').forEach(el=>el.remove());
+        // Re-render entries
+        entries.forEach((e,i)=>{
+          const entry=buildLogEntry(key,e,i);
+          slotEl.insertBefore(entry, slotEl.querySelector('.add-meal-btn'));
+        });
+        // Update day badge count
+        const dayCard=slotEl.closest('.meal-log-day');
+        if(dayCard){
+          const allKeys=['breakfast','lunch','dinner','snack'].map(s=>getLogKey(currentLogWeek,day,s));
+          const total=allKeys.reduce((acc,k)=>acc+(DB.logs[k]||[]).length,0);
+          const badge=dayCard.querySelector('.meal-log-day-header h4 span');
+          if(total===0 && badge) badge.remove();
+          else if(badge) badge.textContent=total;
+        }
+      }
+    },200);
+  } else {
+    renderLogBody();
+  }
+}
+
+
+// ── Copy single meal ────────────────────────────────────
+let _copySource=null;
+function openCopyMealModal(key,idx,evt){
+  if(evt) evt.stopPropagation();
+  const parts=key.split('|'); // week|day|slot
+  const entry=(DB.logs[key]||[])[idx];
+  if(!entry) return;
+  _copySource={key,idx,entry};
+  document.getElementById('copy-meal-desc').textContent='"'+entry.name+'" — pick where to copy it:';
+  const wSel=document.getElementById('copy-meal-week');
+  wSel.innerHTML='';
+  for(let w=1;w<=WEEKS;w++){
+    const o=document.createElement('option');
+    o.value=w; o.textContent='Week '+w;
+    if(w===currentLogWeek) o.selected=true;
+    wSel.appendChild(o);
+  }
+  document.getElementById('copy-meal-day').value=parts[1]||'Monday';
+  document.getElementById('copy-meal-slot').value=parts[2]||'breakfast';
+  document.getElementById('copy-modal-backdrop').classList.add('open');
+}
+function closeCopyModal(){document.getElementById('copy-modal-backdrop').classList.remove('open');_copySource=null;}
+function confirmCopyMeal(){
+  if(!_copySource) return;
+  const toWeek=parseInt(document.getElementById('copy-meal-week').value);
+  const toDay=document.getElementById('copy-meal-day').value;
+  const toSlot=document.getElementById('copy-meal-slot').value;
+  const toKey=getLogKey(toWeek,toDay,toSlot);
+  if(!DB.logs[toKey]) DB.logs[toKey]=[];
+  DB.logs[toKey].push({..._copySource.entry});
+  save(DB);
+  closeCopyModal();
   renderLogBody();
+}
+
+// ── Add meal idea to log ────────────────────────────────
+let _ideaEntry=null;
+function openIdeaCopyModal(btn, evt){
+  evt.stopPropagation();
+  // Gather meal data from the DOM
+  const mealOption = btn.closest('.meal-option');
+  const name = mealOption.querySelector('h5').textContent.trim();
+  const macrosEl = mealOption.querySelector('.meal-macros');
+  const calsMatch = macrosEl ? macrosEl.textContent.match(/~(\d+)\s*cal/) : null;
+  const cals = calsMatch ? parseInt(calsMatch[1]) : null;
+  // Get ingredients text (everything inside meal-ingredients except the button itself)
+  const ingDiv = mealOption.querySelector('.meal-ingredients');
+  const ingText = ingDiv ? ingDiv.childNodes[2] ? ingDiv.childNodes[2].textContent.trim() : '' : '';
+  _ideaEntry = {name, cals, ing: ingText};
+  document.getElementById('idea-modal-name').textContent = name;
+  // Populate week selector
+  const wSel = document.getElementById('idea-week');
+  wSel.innerHTML = '';
+  for(let w=1;w<=WEEKS;w++){
+    const o=document.createElement('option');
+    o.value=w; o.textContent='Week '+w;
+    if(w===currentLogWeek) o.selected=true;
+    wSel.appendChild(o);
+  }
+  // Default slot based on which recipe section we're in
+  const section = btn.closest('.recipe-section');
+  const sectionId = section ? section.id : '';
+  const slotMap = {'rs-breakfast':'breakfast','rs-lunch':'lunch','rs-dinner':'dinner','rs-snacks':'snack'};
+  document.getElementById('idea-slot').value = slotMap[sectionId] || 'breakfast';
+  document.getElementById('idea-modal-backdrop').classList.add('open');
+}
+function closeIdeaModal(){document.getElementById('idea-modal-backdrop').classList.remove('open');_ideaEntry=null;}
+function confirmAddIdea(){
+  if(!_ideaEntry) return;
+  const toWeek=parseInt(document.getElementById('idea-week').value);
+  const toDay=document.getElementById('idea-day').value;
+  const toSlot=document.getElementById('idea-slot').value;
+  const toKey=getLogKey(toWeek,toDay,toSlot);
+  if(!DB.logs[toKey]) DB.logs[toKey]=[];
+  DB.logs[toKey].push({..._ideaEntry});
+  save(DB);
+  closeIdeaModal();
+  // Show brief confirmation
+  const btn=document.querySelector('#idea-modal-backdrop');
+  const flash=document.createElement('div');
+  flash.style.cssText='position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--green);color:#fff;padding:10px 20px;border-radius:100px;font-size:13px;font-weight:600;z-index:200;pointer-events:none;font-family:DM Sans,sans-serif';
+  flash.textContent='Added to Week '+toWeek+' '+toDay;
+  document.body.appendChild(flash);
+  setTimeout(()=>flash.remove(),1800);
 }
 
 // ── Modal ───────────────────────────────────────────────
@@ -960,26 +1208,6 @@ function saveEntry(){
   save(DB);
   closeModal();
   if(w===currentLogWeek) renderLogBody();
-}
-
-// ── Copy week ───────────────────────────────────────────
-function copyWeek(){
-  const toWeek=parseInt(document.getElementById('copy-to-select').value);
-  if(!toWeek) return;
-  const from=currentLogWeek;
-  let copied=0;
-  DAYS.forEach(day=>{
-    SLOTS.forEach(slot=>{
-      const fromKey=getLogKey(from,day,slot);
-      const toKey=getLogKey(toWeek,day,slot);
-      if(DB.logs[fromKey]&&DB.logs[fromKey].length>0){
-        DB.logs[toKey]=(DB.logs[toKey]||[]).concat(DB.logs[fromKey].map(e=>({...e})));
-        copied++;
-      }
-    });
-  });
-  save(DB);
-  alert('Copied '+(copied>0?'meals':'nothing (no meals logged in week '+from+')')+' from Week '+from+' to Week '+toWeek+'.');
 }
 
 // ── Shopping list ───────────────────────────────────────
@@ -1036,7 +1264,8 @@ function renderShopList(){
       row.className='shop-item';
       const id='si_'+currentShopWeek+'_'+globalIdx;
       row.innerHTML='<input type="checkbox" id="'+id+'"'+(item.checked?' checked':'')+'>'
-        +'<label id="lbl'+id+'" for="'+id+'"'+(item.checked?' class="checked"':'')+'>'+item.name+'</label>';
+        +'<label id="lbl'+id+'" for="'+id+'"'+(item.checked?' class="checked"':'')+'>'+item.name+'</label>'
+        +'<button onclick="deleteShopItem('+globalIdx+')" style="background:none;border:none;cursor:pointer;color:var(--ink-pale);font-size:16px;padding:0 2px;line-height:1;flex-shrink:0" title="Remove">×</button>';
       row.querySelector('input').onchange=(e)=>{
         item.checked=e.target.checked;
         row.querySelector('label').className=e.target.checked?'checked':'';
@@ -1047,26 +1276,57 @@ function renderShopList(){
     body.appendChild(sec);
   });
 }
-function clearChecked(){
+function deleteShopItem(idx){
   const shopKey='shop_'+currentShopWeek;
-  if(DB.shop[shopKey]) DB.shop[shopKey]=DB.shop[shopKey].filter(i=>!i.checked);
+  if(DB.shop[shopKey]) DB.shop[shopKey].splice(idx,1);
   save(DB);
   renderShopList();
 }
 
+// ── Water counter ─────────────────────────────────────────
+const WATER_GOAL_OZ = 80; // 10 cups of 8oz
+const CUP_OZ = 8;
+let waterCups = parseInt(localStorage.getItem('gg_water')||'0');
+function renderWater(){
+  const lbl=document.getElementById('water-count');
+  const rect=document.getElementById('water-fill-rect');
+  const pct=document.getElementById('water-pct');
+  if(!lbl) return;
+  const oz=waterCups*CUP_OZ;
+  const fillPct=Math.min(waterCups/10,1); // fill based on 10-cup goal
+  lbl.textContent=oz+' oz / '+WATER_GOAL_OZ+' oz goal';
+  if(rect){
+    // Cup interior roughly y=8 to y=49, height=41px in viewBox
+    const emptyY=8; const fullY=49; const totalH=fullY-emptyY;
+    const fillH=totalH*fillPct;
+    const newY=fullY-fillH;
+    rect.setAttribute('y',newY);
+    rect.setAttribute('height',fillH+2);
+    // Colour transitions: light blue -> deeper blue as fills
+    const blues=['#a8d8f0','#7ec8e8','#5bb8f5','#3aa8f0','#1898e8','#0088e0','#0078d0','#0068c0','#0058b0','#0048a0'];
+    rect.setAttribute('fill', blues[Math.min(waterCups,9)] || '#0048a0');
+  }
+  if(pct){
+    pct.textContent=waterCups>0?(Math.round(fillPct*100)+'%'):'';
+    pct.style.color=fillPct>0.5?'white':'#1a5c99';
+  }
+}
+function addWater(){waterCups++;localStorage.setItem('gg_water',waterCups);renderWater();}
+function resetWater(){waterCups=0;localStorage.setItem('gg_water',0);renderWater();}
+
 // ── Init ────────────────────────────────────────────────
 setTimeout(()=>{const f=document.getElementById('bar-fill');if(f)f.style.width='12%';},500);
+renderWater();
 
 // Service worker — unregister old caches then register fresh
 if('serviceWorker' in navigator){
   navigator.serviceWorker.getRegistrations().then(regs=>{
-    // Unregister any old SW registrations first
     const old=regs.filter(r=>!r.active||!r.active.scriptURL.includes('sw.js'));
     Promise.all(old.map(r=>r.unregister())).then(()=>{
-      navigator.serviceWorker.register('sw.js?v=3').catch(()=>{});
+      navigator.serviceWorker.register('sw.js?v=4').catch(()=>{});
     });
   }).catch(()=>{
-    navigator.serviceWorker.register('sw.js?v=3').catch(()=>{});
+    navigator.serviceWorker.register('sw.js?v=4').catch(()=>{});
   });
 }
 </script>
