@@ -1056,7 +1056,19 @@ function clearChecked(){
 
 // ── Init ────────────────────────────────────────────────
 setTimeout(()=>{const f=document.getElementById('bar-fill');if(f)f.style.width='12%';},500);
-if('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(()=>{});
+
+// Service worker — unregister old caches then register fresh
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.getRegistrations().then(regs=>{
+    // Unregister any old SW registrations first
+    const old=regs.filter(r=>!r.active||!r.active.scriptURL.includes('sw.js'));
+    Promise.all(old.map(r=>r.unregister())).then(()=>{
+      navigator.serviceWorker.register('sw.js?v=3').catch(()=>{});
+    });
+  }).catch(()=>{
+    navigator.serviceWorker.register('sw.js?v=3').catch(()=>{});
+  });
+}
 </script>
 </body>
 </html>
