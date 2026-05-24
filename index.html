@@ -9,656 +9,1054 @@
 <meta name="theme-color" content="#f5f0e8">
 <title>GlowUp Glutes — 8-Week Program</title>
 <link rel="manifest" href="manifest.json">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
-  --cream: #f5f0e8;
-  --cream-dark: #ede6d8;
-  --cream-mid: #e8e0cf;
-  --lime: #c8e86a;
-  --lime-dark: #a8c84a;
-  --lime-deep: #7aaa00;
-  --lime-text: #3d5c00;
-  --yellow: #f5d840;
-  --yellow-dark: #e0c020;
-  --yellow-text: #6b5000;
-  --green: #4a7c2f;
-  --green-light: #d6f0b0;
-  --green-pale: #eaf6d6;
-  --ink: #1a1a0e;
-  --ink-mid: #3a3a22;
-  --ink-light: #6a6a50;
-  --ink-pale: #9a9a7a;
-  --white: #ffffff;
-  --surface: #faf7f0;
-  --border: rgba(74,124,47,0.15);
-  --border-strong: rgba(74,124,47,0.3);
-  --shadow: 0 2px 12px rgba(26,26,14,0.08);
-  --shadow-lg: 0 8px 32px rgba(26,26,14,0.12);
-  --radius: 14px;
-  --radius-sm: 8px;
-  --radius-pill: 100px;
-  font-size: 16px;
+  --cream:#f5f0e8;--cream-dark:#ede6d8;--lime:#c8e86a;--lime-dark:#a8c84a;--lime-deep:#7aaa00;
+  --lime-text:#3d5c00;--yellow:#f5d840;--yellow-dark:#e0c020;--yellow-text:#6b5000;
+  --green:#4a7c2f;--green-light:#d6f0b0;--green-pale:#eaf6d6;--ink:#1a1a0e;
+  --ink-mid:#3a3a22;--ink-light:#6a6a50;--ink-pale:#9a9a7a;--white:#ffffff;
+  --surface:#faf7f0;--border:rgba(74,124,47,0.15);--border-strong:rgba(74,124,47,0.3);
+  --radius:14px;--radius-sm:8px;--radius-pill:100px;
 }
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;overflow:hidden;background:var(--cream);font-family:'DM Sans',sans-serif;color:var(--ink)}
+.app{display:flex;flex-direction:column;height:100vh;height:100dvh}
+.top-bar{background:var(--cream);padding:14px 20px 10px;border-bottom:1px solid var(--border);flex-shrink:0}
+.top-bar h1{font-family:'DM Serif Display',serif;font-size:22px;color:var(--ink);letter-spacing:-0.3px}
+.top-bar h1 span{color:var(--green)}
+.top-bar p{font-size:12px;color:var(--ink-light);margin-top:1px}
+.content{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.bottom-nav{display:flex;background:var(--white);border-top:1px solid var(--border);flex-shrink:0;padding-bottom:env(safe-area-inset-bottom)}
+.nav-btn{flex:1;padding:10px 4px 8px;display:flex;flex-direction:column;align-items:center;gap:3px;border:none;background:none;cursor:pointer;font-family:'DM Sans',sans-serif}
+.nav-btn svg{width:22px;height:22px;stroke:var(--ink-pale);fill:none;stroke-width:1.8;transition:stroke 0.2s}
+.nav-btn span{font-size:10px;color:var(--ink-pale);font-weight:500;transition:color 0.2s}
+.nav-btn.active svg{stroke:var(--green)}
+.nav-btn.active span{color:var(--green)}
+.screen{display:none;padding:16px 16px 24px}
+.screen.active{display:block}
+.section-title{font-size:11px;font-weight:600;color:var(--ink-light);text-transform:uppercase;letter-spacing:0.8px;margin:18px 0 8px}
+.badge{display:inline-block;font-size:10px;font-weight:600;padding:3px 9px;border-radius:var(--radius-pill)}
+.badge-lime{background:var(--lime);color:var(--lime-text)}
+.badge-yellow{background:var(--yellow);color:var(--yellow-text)}
+.badge-green{background:var(--green-light);color:var(--lime-text)}
+.badge-phase1{background:var(--green-pale);color:var(--green)}
+.badge-phase2{background:var(--lime);color:var(--lime-text)}
+.badge-phase3{background:var(--yellow);color:var(--yellow-text)}
+.info-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:8px}
+.info-card h3{font-size:14px;font-weight:600;color:var(--ink);margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.info-card p{font-size:13px;color:var(--ink-light);line-height:1.6}
+.divider{height:1px;background:var(--border);margin:8px 0}
+/* HOME */
+.hero-card{background:linear-gradient(135deg,var(--lime) 0%,var(--yellow) 100%);border-radius:var(--radius);padding:20px;margin-bottom:14px;position:relative;overflow:hidden}
+.hero-card::after{content:'';position:absolute;right:-20px;top:-20px;width:120px;height:120px;background:rgba(255,255,255,0.15);border-radius:50%}
+.hero-card h2{font-family:'DM Serif Display',serif;font-size:26px;color:var(--ink);line-height:1.1}
+.hero-card p{font-size:13px;color:var(--ink-mid);margin-top:6px}
+.hero-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:14px}
+.stat-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 10px;text-align:center}
+.stat-val{font-size:20px;font-weight:600;color:var(--green);font-family:'DM Serif Display',serif}
+.stat-lbl{font-size:10px;color:var(--ink-light);margin-top:2px;text-transform:uppercase;letter-spacing:0.4px}
+/* WORKOUTS */
+.phase-tabs{display:flex;gap:6px;overflow-x:auto;padding:2px 0 10px;-webkit-overflow-scrolling:touch}
+.phase-tabs::-webkit-scrollbar{display:none}
+.phase-tab{flex-shrink:0;padding:7px 14px;border-radius:var(--radius-pill);border:1.5px solid var(--border-strong);font-size:12px;font-weight:600;background:var(--white);color:var(--ink-light);cursor:pointer;transition:all 0.2s}
+.phase-tab.active{background:var(--green);color:var(--white);border-color:var(--green)}
+.phase-desc{background:var(--green-pale);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 14px;margin-bottom:14px;font-size:13px;color:var(--lime-text);line-height:1.6}
+.day-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:12px;overflow:hidden}
+.day-header{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;cursor:pointer}
+.day-header-left{display:flex;flex-direction:column;gap:4px}
+.day-header h3{font-size:15px;font-weight:600;color:var(--ink)}
+.day-header p{font-size:12px;color:var(--ink-light)}
+.day-chevron{width:20px;height:20px;transition:transform 0.25s;stroke:var(--ink-pale);fill:none;stroke-width:2;flex-shrink:0}
+.day-card.open .day-chevron{transform:rotate(180deg)}
+.day-body{display:none;border-top:1px solid var(--border)}
+.day-card.open .day-body{display:block}
+.exercise-row{padding:12px 16px;border-bottom:1px solid var(--border)}
+.exercise-row:last-child{border-bottom:none}
+.ex-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.ex-name{font-size:14px;font-weight:600;color:var(--ink)}
+.ex-sets{font-size:12px;font-weight:600;color:var(--green);white-space:nowrap}
+.ex-note{font-size:12px;color:var(--ink-light);margin-top:4px;line-height:1.5}
+.ex-tip{font-size:11px;color:var(--green);margin-top:5px;font-style:italic}
+.ex-category{display:inline-block;width:6px;height:6px;border-radius:50%;margin-right:6px;vertical-align:2px}
+.cat-glute{background:var(--green)}.cat-abs{background:var(--yellow-dark)}
+.warmup-row{padding:10px 16px;background:var(--cream);border-bottom:1px solid var(--border)}
+.warmup-row p{font-size:12px;color:var(--ink-light)}
+.warmup-title{font-size:11px;font-weight:600;color:var(--ink-pale);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px}
+.phase-content{display:none}
+.phase-content.active{display:block}
+/* EQUIPMENT */
+.equip-priority{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:var(--radius-pill);margin-right:6px}
+.pri-must{background:var(--lime);color:var(--lime-text)}
+.pri-soon{background:var(--yellow);color:var(--yellow-text)}
+.pri-later{background:var(--cream-dark);color:var(--ink-light)}
+.equip-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:8px}
+.equip-card h3{font-size:14px;font-weight:600;color:var(--ink);margin-bottom:4px}
+.equip-card .price{font-size:12px;color:var(--green);font-weight:600}
+.equip-card p{font-size:13px;color:var(--ink-light);margin-top:4px;line-height:1.5}
+.equip-already{background:var(--cream)}
+.pill-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+/* PROGRESS */
+.prog-hero{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:16px;margin-bottom:14px}
+.prog-bar-wrap{margin-top:10px}
+.prog-bar-label{display:flex;justify-content:space-between;font-size:12px;color:var(--ink-light);margin-bottom:5px}
+.prog-bar{height:8px;background:var(--cream-dark);border-radius:var(--radius-pill);overflow:hidden}
+.prog-bar-fill{height:100%;background:linear-gradient(90deg,var(--lime-dark),var(--green));border-radius:var(--radius-pill);width:0%;transition:width 0.6s ease}
+.rule-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px 16px;margin-bottom:8px}
+.rule-card h4{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:4px}
+.rule-card p{font-size:13px;color:var(--ink-light);line-height:1.6}
+.warning-card{background:#fff8e6;border:1px solid #e8d060;border-radius:var(--radius-sm);padding:12px 14px;margin-bottom:8px}
+.warning-card h4{font-size:13px;font-weight:600;color:#7a5c00;margin-bottom:4px}
+.warning-card p{font-size:13px;color:#8a7020;line-height:1.6}
+.tip-card{background:var(--green-pale);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 14px;margin-bottom:8px}
+.tip-card h4{font-size:13px;font-weight:600;color:var(--lime-text);margin-bottom:4px}
+.tip-card p{font-size:13px;color:var(--ink-light);line-height:1.6}
 
-* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-html, body { height: 100%; overflow: hidden; background: var(--cream); font-family: 'DM Sans', sans-serif; color: var(--ink); }
+/* NUTRITION - full system */
+.nut-cal-card{background:linear-gradient(135deg,var(--lime) 0%,var(--yellow) 100%);border-radius:var(--radius);padding:16px;margin-bottom:14px;text-align:center}
+.nut-cal-card .big{font-family:'DM Serif Display',serif;font-size:42px;color:var(--ink)}
+.nut-cal-card p{font-size:13px;color:var(--ink-mid)}
+.macro-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.macro-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px 12px}
+.macro-val{font-size:24px;font-weight:700;font-family:'DM Serif Display',serif}
+.macro-label{font-size:11px;color:var(--ink-light);margin-top:2px}
 
-/* LAYOUT */
-.app { display: flex; flex-direction: column; height: 100vh; height: 100dvh; }
-.top-bar { background: var(--cream); padding: 14px 20px 10px; border-bottom: 1px solid var(--border); flex-shrink: 0; }
-.top-bar h1 { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--ink); letter-spacing: -0.3px; }
-.top-bar h1 span { color: var(--green); }
-.top-bar p { font-size: 12px; color: var(--ink-light); margin-top: 1px; }
-.content { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; }
-.bottom-nav { display: flex; background: var(--white); border-top: 1px solid var(--border); flex-shrink: 0; padding-bottom: env(safe-area-inset-bottom); }
-.nav-btn { flex: 1; padding: 10px 4px 8px; display: flex; flex-direction: column; align-items: center; gap: 3px; border: none; background: none; cursor: pointer; font-family: 'DM Sans', sans-serif; }
-.nav-btn svg { width: 22px; height: 22px; stroke: var(--ink-pale); fill: none; stroke-width: 1.8; transition: stroke 0.2s; }
-.nav-btn span { font-size: 10px; color: var(--ink-pale); font-weight: 500; transition: color 0.2s; }
-.nav-btn.active svg { stroke: var(--green); }
-.nav-btn.active span { color: var(--green); }
+/* Collapsible protein tips */
+.collapsible-header{display:flex;align-items:center;justify-content:space-between;background:var(--white);border:1px solid var(--border);border-radius:var(--radius-sm);padding:13px 16px;cursor:pointer;margin-bottom:4px}
+.collapsible-header h4{font-size:14px;font-weight:600;color:var(--ink)}
+.collapsible-header svg{width:18px;height:18px;stroke:var(--ink-pale);fill:none;stroke-width:2;transition:transform 0.25s;flex-shrink:0}
+.collapsible-header.open svg{transform:rotate(180deg)}
+.collapsible-body{display:none;margin-bottom:10px}
+.collapsible-body.open{display:block}
 
-/* SCREENS */
-.screen { display: none; padding: 16px 16px 24px; }
-.screen.active { display: block; }
+/* Recipe accordion */
+.recipe-section{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:8px;overflow:hidden}
+.recipe-header{display:flex;align-items:center;justify-content:space-between;padding:13px 16px;cursor:pointer}
+.recipe-header-left{display:flex;align-items:center;gap:10px}
+.recipe-icon{font-size:20px}
+.recipe-header h4{font-size:14px;font-weight:600;color:var(--ink)}
+.recipe-header p{font-size:11px;color:var(--ink-light);margin-top:1px}
+.recipe-chevron{width:18px;height:18px;stroke:var(--ink-pale);fill:none;stroke-width:2;transition:transform 0.25s;flex-shrink:0}
+.recipe-section.open .recipe-chevron{transform:rotate(180deg)}
+.recipe-body{display:none;border-top:1px solid var(--border)}
+.recipe-section.open .recipe-body{display:block}
+.meal-option{padding:12px 16px;border-bottom:1px solid var(--border);cursor:pointer}
+.meal-option:last-child{border-bottom:none}
+.meal-option-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.meal-option h5{font-size:13px;font-weight:600;color:var(--ink)}
+.meal-tag{font-size:10px;font-weight:600;padding:2px 7px;border-radius:var(--radius-pill);flex-shrink:0}
+.tag-meat{background:#fde8e8;color:#8b2020}
+.tag-nomeat{background:var(--green-pale);color:var(--lime-text)}
+.meal-option p{font-size:12px;color:var(--ink-light);margin-top:3px;line-height:1.5}
+.meal-macros{font-size:11px;color:var(--ink-pale);margin-top:4px}
+.meal-ingredients{background:var(--cream);padding:10px 16px;border-top:1px solid var(--border);display:none}
+.meal-ingredients.open{display:block}
+.meal-ingredients p{font-size:12px;color:var(--ink-light);line-height:1.8}
+.meal-ingredients strong{color:var(--lime-text);font-size:11px;text-transform:uppercase;letter-spacing:0.4px}
+.meal-option.open .meal-ingredients{display:block}
 
-/* HOME SCREEN */
-.hero-card { background: linear-gradient(135deg, var(--lime) 0%, var(--yellow) 100%); border-radius: var(--radius); padding: 20px; margin-bottom: 14px; position: relative; overflow: hidden; }
-.hero-card::after { content: ''; position: absolute; right: -20px; top: -20px; width: 120px; height: 120px; background: rgba(255,255,255,0.15); border-radius: 50%; }
-.hero-card h2 { font-family: 'DM Serif Display', serif; font-size: 26px; color: var(--ink); line-height: 1.1; }
-.hero-card p { font-size: 13px; color: var(--ink-mid); margin-top: 6px; font-weight: 400; }
-.hero-stats { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 14px; }
-.stat-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 12px 10px; text-align: center; }
-.stat-val { font-size: 20px; font-weight: 600; color: var(--green); font-family: 'DM Serif Display', serif; }
-.stat-lbl { font-size: 10px; color: var(--ink-light); margin-top: 2px; text-transform: uppercase; letter-spacing: 0.4px; }
-.section-title { font-size: 11px; font-weight: 600; color: var(--ink-light); text-transform: uppercase; letter-spacing: 0.8px; margin: 18px 0 8px; }
-.info-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 16px; margin-bottom: 8px; }
-.info-card h3 { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
-.info-card p { font-size: 13px; color: var(--ink-light); line-height: 1.6; }
-.badge { display: inline-block; font-size: 10px; font-weight: 600; padding: 3px 9px; border-radius: var(--radius-pill); }
-.badge-lime { background: var(--lime); color: var(--lime-text); }
-.badge-yellow { background: var(--yellow); color: var(--yellow-text); }
-.badge-green { background: var(--green-light); color: var(--lime-text); }
-.badge-phase1 { background: var(--green-pale); color: var(--green); }
-.badge-phase2 { background: var(--lime); color: var(--lime-text); }
-.badge-phase3 { background: var(--yellow); color: var(--yellow-text); }
+/* Meal Log / Week system */
+.week-nav{display:flex;align-items:center;justify-content:space-between;background:var(--white);border:1px solid var(--border);border-radius:var(--radius-sm);padding:10px 14px;margin-bottom:10px}
+.week-nav-btn{background:none;border:none;cursor:pointer;font-size:18px;color:var(--green);padding:0 6px;font-weight:600}
+.week-nav span{font-size:14px;font-weight:600;color:var(--ink)}
+.week-tabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:8px;-webkit-overflow-scrolling:touch}
+.week-tabs::-webkit-scrollbar{display:none}
+.week-tab{flex-shrink:0;padding:6px 14px;border-radius:var(--radius-pill);border:1.5px solid var(--border-strong);font-size:12px;font-weight:600;background:var(--white);color:var(--ink-light);cursor:pointer}
+.week-tab.active{background:var(--green);color:var(--white);border-color:var(--green)}
+.meal-log-day{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:10px;overflow:hidden}
+.meal-log-day-header{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;cursor:pointer;background:var(--cream)}
+.meal-log-day-header h4{font-size:13px;font-weight:600;color:var(--ink)}
+.meal-log-day-body{display:none;border-top:1px solid var(--border)}
+.meal-log-day.open .meal-log-day-body{display:block}
+.log-slot{padding:10px 16px;border-bottom:1px solid var(--border)}
+.log-slot:last-child{border-bottom:none}
+.log-slot-label{font-size:11px;font-weight:600;color:var(--ink-pale);text-transform:uppercase;letter-spacing:0.4px;margin-bottom:6px}
+.log-entry{display:flex;align-items:center;justify-content:space-between;background:var(--cream);border-radius:var(--radius-sm);padding:8px 10px;margin-bottom:5px}
+.log-entry-name{font-size:13px;font-weight:500;color:var(--ink)}
+.log-entry-cals{font-size:11px;color:var(--green);font-weight:600}
+.log-entry-del{background:none;border:none;cursor:pointer;color:var(--ink-pale);font-size:16px;padding:0 2px;line-height:1}
+.add-meal-btn{display:flex;align-items:center;gap:6px;background:none;border:1.5px dashed var(--border-strong);border-radius:var(--radius-sm);padding:7px 12px;font-size:12px;color:var(--green);font-weight:600;cursor:pointer;width:100%;margin-top:4px}
+.copy-week-bar{display:flex;align-items:center;gap:8px;background:var(--white);border:1px solid var(--border);border-radius:var(--radius-sm);padding:10px 14px;margin-bottom:10px;flex-wrap:wrap}
+.copy-week-bar span{font-size:12px;color:var(--ink-light);flex-shrink:0}
+.copy-week-bar select{flex:1;min-width:80px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);padding:5px 8px;font-size:12px;background:var(--white);color:var(--ink);font-family:'DM Sans',sans-serif}
+.copy-week-bar button{background:var(--green);color:var(--white);border:none;border-radius:var(--radius-sm);padding:6px 12px;font-size:12px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;flex-shrink:0}
 
-/* WORKOUT SCREEN */
-.phase-tabs { display: flex; gap: 6px; overflow-x: auto; padding: 2px 0 10px; -webkit-overflow-scrolling: touch; }
-.phase-tabs::-webkit-scrollbar { display: none; }
-.phase-tab { flex-shrink: 0; padding: 7px 14px; border-radius: var(--radius-pill); border: 1.5px solid var(--border-strong); font-size: 12px; font-weight: 600; background: var(--white); color: var(--ink-light); cursor: pointer; transition: all 0.2s; }
-.phase-tab.active { background: var(--green); color: var(--white); border-color: var(--green); }
-.phase-desc { background: var(--green-pale); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 12px 14px; margin-bottom: 14px; font-size: 13px; color: var(--lime-text); line-height: 1.6; }
-.day-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: 12px; overflow: hidden; }
-.day-header { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; cursor: pointer; }
-.day-header-left { display: flex; flex-direction: column; gap: 4px; }
-.day-header h3 { font-size: 15px; font-weight: 600; color: var(--ink); }
-.day-header p { font-size: 12px; color: var(--ink-light); }
-.day-chevron { width: 20px; height: 20px; transition: transform 0.25s; }
-.day-card.open .day-chevron { transform: rotate(180deg); }
-.day-body { display: none; border-top: 1px solid var(--border); }
-.day-card.open .day-body { display: block; }
-.exercise-row { padding: 12px 16px; border-bottom: 1px solid var(--border); }
-.exercise-row:last-child { border-bottom: none; }
-.ex-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
-.ex-name { font-size: 14px; font-weight: 600; color: var(--ink); }
-.ex-sets { font-size: 12px; font-weight: 600; color: var(--green); white-space: nowrap; }
-.ex-note { font-size: 12px; color: var(--ink-light); margin-top: 4px; line-height: 1.5; }
-.ex-tip { font-size: 11px; color: var(--green); margin-top: 5px; font-style: italic; }
-.ex-category { display: inline-block; width: 6px; height: 6px; border-radius: 50%; margin-right: 6px; vertical-align: 2px; }
-.cat-glute { background: var(--green); }
-.cat-abs { background: var(--yellow-dark); }
-.warmup-row { padding: 10px 16px; background: var(--cream); border-bottom: 1px solid var(--border); }
-.warmup-row p { font-size: 12px; color: var(--ink-light); }
-.warmup-title { font-size: 11px; font-weight: 600; color: var(--ink-pale); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
-.phase-content { display: none; }
-.phase-content.active { display: block; }
+/* Shopping list */
+.shop-section{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:10px}
+.shop-section h4{font-size:13px;font-weight:600;color:var(--ink-light);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px}
+.shop-item{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid var(--border)}
+.shop-item:last-child{border-bottom:none}
+.shop-item input[type=checkbox]{width:16px;height:16px;accent-color:var(--green);flex-shrink:0}
+.shop-item label{font-size:13px;color:var(--ink);cursor:pointer;flex:1}
+.shop-item label.checked{text-decoration:line-through;color:var(--ink-pale)}
+.shop-empty{font-size:13px;color:var(--ink-pale);padding:8px 0;font-style:italic}
 
-/* NUTRITION SCREEN */
-.macro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px; }
-.macro-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 14px 12px; }
-.macro-val { font-size: 24px; font-weight: 700; font-family: 'DM Serif Display', serif; }
-.macro-label { font-size: 11px; color: var(--ink-light); margin-top: 2px; }
-.cal-card { background: linear-gradient(135deg, var(--lime) 0%, var(--yellow) 100%); border-radius: var(--radius); padding: 16px; margin-bottom: 14px; text-align: center; }
-.cal-card .big { font-family: 'DM Serif Display', serif; font-size: 42px; color: var(--ink); }
-.cal-card p { font-size: 13px; color: var(--ink-mid); }
-.meal-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 14px 16px; margin-bottom: 8px; }
-.meal-card h4 { font-size: 13px; font-weight: 600; color: var(--ink-light); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
-.meal-card p { font-size: 14px; color: var(--ink); line-height: 1.6; }
-.meal-card .macros { font-size: 12px; color: var(--ink-pale); margin-top: 6px; }
-.tip-card { background: var(--green-pale); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 12px 14px; margin-bottom: 8px; }
-.tip-card h4 { font-size: 13px; font-weight: 600; color: var(--lime-text); margin-bottom: 4px; }
-.tip-card p { font-size: 13px; color: var(--ink-light); line-height: 1.6; }
-
-/* EQUIPMENT SCREEN */
-.equip-priority { display: inline-block; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: var(--radius-pill); margin-right: 6px; }
-.pri-must { background: var(--lime); color: var(--lime-text); }
-.pri-soon { background: var(--yellow); color: var(--yellow-text); }
-.pri-later { background: var(--cream-dark); color: var(--ink-light); }
-.equip-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 16px; margin-bottom: 8px; }
-.equip-card h3 { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
-.equip-card .price { font-size: 12px; color: var(--green); font-weight: 600; }
-.equip-card p { font-size: 13px; color: var(--ink-light); margin-top: 4px; line-height: 1.5; }
-.equip-already { background: var(--cream); }
-
-/* PROGRESS SCREEN */
-.prog-hero { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; margin-bottom: 14px; }
-.prog-bar-wrap { margin-top: 10px; }
-.prog-bar-label { display: flex; justify-content: space-between; font-size: 12px; color: var(--ink-light); margin-bottom: 5px; }
-.prog-bar { height: 8px; background: var(--cream-dark); border-radius: var(--radius-pill); overflow: hidden; }
-.prog-bar-fill { height: 100%; background: linear-gradient(90deg, var(--lime-dark), var(--green)); border-radius: var(--radius-pill); width: 0%; transition: width 0.6s ease; }
-.rule-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 14px 16px; margin-bottom: 8px; }
-.rule-card h4 { font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
-.rule-card p { font-size: 13px; color: var(--ink-light); line-height: 1.6; }
-.warning-card { background: #fff8e6; border: 1px solid #e8d060; border-radius: var(--radius-sm); padding: 12px 14px; margin-bottom: 8px; }
-.warning-card h4 { font-size: 13px; font-weight: 600; color: #7a5c00; margin-bottom: 4px; }
-.warning-card p { font-size: 13px; color: #8a7020; line-height: 1.6; }
-
-/* SHARED */
-.divider { height: 1px; background: var(--border); margin: 8px 0; }
-.pill-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+/* Modal */
+.modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:100;display:none;align-items:flex-end;justify-content:center}
+.modal-backdrop.open{display:flex}
+.modal{background:var(--white);border-radius:var(--radius) var(--radius) 0 0;padding:20px 16px 32px;width:100%;max-width:480px;max-height:80vh;overflow-y:auto}
+.modal h3{font-size:16px;font-weight:600;color:var(--ink);margin-bottom:14px}
+.modal label{display:block;font-size:12px;font-weight:600;color:var(--ink-light);margin-bottom:4px;margin-top:12px}
+.modal input,.modal select,.modal textarea{width:100%;border:1px solid var(--border-strong);border-radius:var(--radius-sm);padding:9px 12px;font-size:14px;background:var(--white);color:var(--ink);font-family:'DM Sans',sans-serif}
+.modal textarea{height:80px;resize:none}
+.modal-actions{display:flex;gap:8px;margin-top:16px}
+.btn-primary{flex:1;background:var(--green);color:var(--white);border:none;border-radius:var(--radius-sm);padding:12px;font-size:14px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif}
+.btn-secondary{flex:1;background:var(--cream);color:var(--ink);border:1px solid var(--border-strong);border-radius:var(--radius-sm);padding:12px;font-size:14px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif}
 </style>
 </head>
 <body>
 <div class="app">
-  <!-- TOP BAR -->
-  <div class="top-bar">
-    <h1>GlowUp <span>Glutes</span></h1>
-    <p>8-Week Home Program · 3x/week</p>
+<div class="top-bar">
+  <h1>GlowUp <span>Glutes</span></h1>
+  <p>8-Week Home Program · 3x/week</p>
+</div>
+<div class="content">
+
+<!-- HOME -->
+<div id="screen-home" class="screen active">
+  <div class="hero-card">
+    <h2>Build Your<br>Best Glutes</h2>
+    <p>8-week home program · No gym required</p>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-card"><div class="stat-val">8</div><div class="stat-lbl">Weeks</div></div>
+    <div class="stat-card"><div class="stat-val">3×</div><div class="stat-lbl">Per week</div></div>
+    <div class="stat-card"><div class="stat-val">75min</div><div class="stat-lbl">Per session</div></div>
+  </div>
+  <div class="section-title">The 4 Phases</div>
+  <div class="info-card"><h3><span class="badge badge-phase1">Weeks 1–2</span> Foundation</h3><p>Learn the movement patterns. 3 sets, 12–15 reps, light resistance. Stop 2 reps shy of failure every set. Build the mind-muscle connection.</p></div>
+  <div class="info-card"><h3><span class="badge badge-phase2">Weeks 3–4</span> Volume Build</h3><p>Add a 4th set on all main compounds. Increase band resistance. Last set of each main exercise to 1 rep in reserve.</p></div>
+  <div class="info-card"><h3><span class="badge badge-phase3">Weeks 5–6</span> Intensity Up</h3><p>Rep range shifts to 8–12. Heavier dumbbell introduced. Last set of hip thrust, RDL, and split squat goes to true failure.</p></div>
+  <div class="info-card"><h3><span class="badge badge-yellow">Weeks 7–8</span> Peak</h3><p>Highest volume and intensity. Push the last 2 sets of compounds to failure. Re-measure glutes at end of week 8.</p></div>
+  <div class="section-title">Training Structure</div>
+  <div class="info-card">
+    <h3>📅 Schedule</h3>
+    <p>3 sessions per week with at least 1 rest day between. Suggested: <strong>Mon / Wed / Fri</strong> or <strong>Tue / Thu / Sat</strong></p>
+    <div class="divider"></div>
+    <p><strong>Day A</strong> — Hip dominant glutes + Abs<br><strong>Day B</strong> — Knee dominant glutes + Abs<br><strong>Day C</strong> — Full glute circuit + Abs finisher</p>
+  </div>
+  <div class="section-title">Rep to Failure?</div>
+  <div class="info-card">
+    <h3>📊 RIR Method (Reps In Reserve)</h3>
+    <p>Going to full failure every set causes form breakdown without a spotter. Use RIR instead:</p>
+    <div style="font-size:13px;color:var(--ink-light);line-height:1.7;margin-top:8px">
+      • <strong>Weeks 1–2:</strong> Stop 2 reps before failure (2 RIR)<br>
+      • <strong>Weeks 3–4:</strong> Last set = 1 RIR, others = 2 RIR<br>
+      • <strong>Weeks 5–8:</strong> Last set of main compounds = true failure
+    </div>
+  </div>
+</div>
+
+<!-- WORKOUTS -->
+<div id="screen-workouts" class="screen">
+  <div class="phase-tabs">
+    <div class="phase-tab active" onclick="switchPhase('p1',this)">Weeks 1–2</div>
+    <div class="phase-tab" onclick="switchPhase('p2',this)">Weeks 3–4</div>
+    <div class="phase-tab" onclick="switchPhase('p3',this)">Weeks 5–6</div>
+    <div class="phase-tab" onclick="switchPhase('p4',this)">Weeks 7–8</div>
   </div>
 
-  <!-- CONTENT -->
-  <div class="content">
-
-    <!-- HOME -->
-    <div id="screen-home" class="screen active">
-      <div class="hero-card">
-        <h2>Build Your<br>Best Glutes</h2>
-        <p>8-week home program · No gym required</p>
-      </div>
-      <div class="hero-stats">
-        <div class="stat-card"><div class="stat-val">8</div><div class="stat-lbl">Weeks</div></div>
-        <div class="stat-card"><div class="stat-val">3×</div><div class="stat-lbl">Per week</div></div>
-        <div class="stat-card"><div class="stat-val">75min</div><div class="stat-lbl">Per session</div></div>
-      </div>
-
-      <div class="section-title">The 4 Phases</div>
-      <div class="info-card">
-        <h3><span class="badge badge-phase1">Weeks 1–2</span> Foundation</h3>
-        <p>Learn the movement patterns. 3 sets, 12–15 reps, light resistance. Stop 2 reps shy of failure every set. Build the mind-muscle connection.</p>
-      </div>
-      <div class="info-card">
-        <h3><span class="badge badge-phase2">Weeks 3–4</span> Volume Build</h3>
-        <p>Add a 4th set on all main compounds. Increase band resistance. Last set of each main exercise to 1 rep in reserve. Load starts going up.</p>
-      </div>
-      <div class="info-card">
-        <h3><span class="badge badge-phase3">Weeks 5–6</span> Intensity Up</h3>
-        <p>Rep range shifts to 8–12. Heavier dumbbell introduced. Last set of hip thrust, RDL, and split squat goes to true failure.</p>
-      </div>
-      <div class="info-card">
-        <h3><span class="badge badge-yellow">Weeks 7–8</span> Peak</h3>
-        <p>Highest volume and intensity. Push the last 2 sets of compounds to failure. Re-measure glutes at end of week 8 — same time, same spot.</p>
-      </div>
-
-      <div class="section-title">Training Structure</div>
-      <div class="info-card">
-        <h3>📅 Schedule</h3>
-        <p>3 sessions per week with at least 1 rest day between. Suggested: <strong>Mon / Wed / Fri</strong> or <strong>Tue / Thu / Sat.</strong></p>
-        <div class="divider"></div>
-        <p><strong>Day A</strong> — Hip dominant glutes + Abs<br><strong>Day B</strong> — Knee dominant glutes + Abs<br><strong>Day C</strong> — Full glute circuit + Abs finisher</p>
-      </div>
-
-      <div class="section-title">Rep to Failure?</div>
-      <div class="info-card">
-        <h3>📊 RIR Method (Reps In Reserve)</h3>
-        <p>Going to full failure every set causes form breakdown and injury risk without a spotter. Instead, use <strong>RIR</strong>:</p>
-        <div style="margin-top: 8px;">
-          <div style="font-size:13px; color:var(--ink-light); line-height:1.7;">
-            • <strong>Weeks 1–2:</strong> Stop 2 reps before failure (2 RIR)<br>
-            • <strong>Weeks 3–4:</strong> Last set = 1 RIR, other sets = 2 RIR<br>
-            • <strong>Weeks 5–8:</strong> Last set of main compounds = true failure
-          </div>
-        </div>
+  <div id="p1" class="phase-content active">
+    <div class="phase-desc"><strong>Foundation · Weeks 1–2</strong> — Master the movements. 3 sets, 12–15 reps. All sets stop 2 reps before failure. Focus on squeezing the glute at the top of every rep. Rest 90s between glute compounds, 60s between accessories.</div>
+    <div class="day-card" onclick="toggleDay(this)">
+      <div class="day-header"><div class="day-header-left"><h3>Day A — Hip Dominant + Abs</h3><p>7 exercises · ~70 min · <span class="badge badge-lime">Glute Focus</span></p></div><svg class="day-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+      <div class="day-body">
+        <div class="warmup-row"><p class="warmup-title">Warm-up (5–7 min)</p><p>Hip circles x10 each · Cat-cow x10 · Glute bridge hold 30s · Band walks 20 steps each way</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Glute Bridge (Bodyweight)</span></div><span class="ex-sets">3 × 15</span></div><p class="ex-note">Lie on back, feet flat, drive hips up hard. Hold 2 seconds at the top every rep.</p><p class="ex-tip">💡 Squeeze like you're cracking a walnut — don't just lift the hips</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Band Hip Thrust (off couch)</span></div><span class="ex-sets">3 × 12</span></div><p class="ex-note">Upper back on couch edge, band across hip crease. Drive through heels, not toes. 90s rest.</p><p class="ex-tip">💡 Chin tucked, ribs down. At the top the body should form a straight plank.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Romanian Deadlift (2×10 lb DBs)</span></div><span class="ex-sets">3 × 12</span></div><p class="ex-note">Hinge at hips, push them back. Feel the hamstring stretch at the bottom. Drive hips forward to stand.</p><p class="ex-tip">💡 Run DBs down the thighs — they should almost graze the legs</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Donkey Kick (Bodyweight)</span></div><span class="ex-sets">3 × 15 each</span></div><p class="ex-note">On all fours. Keep knee bent 90°. Kick foot straight up toward ceiling. Pause at top. Lower with control.</p><p class="ex-tip">💡 Don't arch the lower back — keep hips square to the floor throughout</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Fire Hydrant (Bodyweight)</span></div><span class="ex-sets">3 × 15 each</span></div><p class="ex-note">On all fours. Keeping knee bent 90°, lift leg out to the side. Keep hips level — don't tilt. Slow lower.</p><p class="ex-tip">💡 Works the upper glute medius — targets the area above the hip for that shelf look</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-abs"></span><span class="ex-name">Dead Bug</span></div><span class="ex-sets">3 × 10 each</span></div><p class="ex-note">Arms up, knees 90°. Lower opposite arm + leg slowly. Lower back stays pressed to floor.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-abs"></span><span class="ex-name">Plank Hold</span></div><span class="ex-sets">3 × 30 sec</span></div><p class="ex-note">Forearm plank. Brace abs, squeeze glutes, breathe. No sagging hips.</p></div>
       </div>
     </div>
-
-    <!-- WORKOUTS -->
-    <div id="screen-workouts" class="screen">
-      <div class="phase-tabs">
-        <div class="phase-tab active" onclick="switchPhase('p1',this)">Weeks 1–2</div>
-        <div class="phase-tab" onclick="switchPhase('p2',this)">Weeks 3–4</div>
-        <div class="phase-tab" onclick="switchPhase('p3',this)">Weeks 5–6</div>
-        <div class="phase-tab" onclick="switchPhase('p4',this)">Weeks 7–8</div>
-      </div>
-
-      <!-- PHASE 1 -->
-      <div id="p1" class="phase-content active">
-        <div class="phase-desc"><strong>Foundation · Weeks 1–2</strong> — Master the movements. 3 sets per exercise, 12–15 reps. All sets stop 2 reps before failure. Focus on squeezing the glute at the top of every rep — don't just move the weight. Rest 90s between glute compounds, 60s between accessories.</div>
-        <!-- DAY A -->
-        <div class="day-card" onclick="toggleDay(this)">
-          <div class="day-header">
-            <div class="day-header-left">
-              <h3>Day A — Hip Dominant + Abs</h3>
-              <p>7 exercises · ~70 min · <span class="badge badge-lime">Glute Focus</span></p>
-            </div>
-            <svg class="day-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
-          <div class="day-body">
-            <div class="warmup-row"><p class="warmup-title">Warm-up (5–7 min)</p><p>Hip circles x 10 each direction · Cat-cow x 10 · Glute bridge hold 30s · Band walks 20 steps each way</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Glute Bridge (Bodyweight)</span></div><span class="ex-sets">3 × 15</span></div><p class="ex-note">Lie on back, feet flat, drive hips up hard. Hold 2 seconds at the top every rep.</p><p class="ex-tip">💡 Squeeze your glutes like you're cracking a walnut — don't just lift your hips</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Band Hip Thrust (off couch)</span></div><span class="ex-sets">3 × 12</span></div><p class="ex-note">Upper back on couch edge, band across hip crease. Drive through heels, not toes. 90s rest.</p><p class="ex-tip">💡 Tuck chin, keep ribs down. At the top your body should be a straight plank.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Romanian Deadlift (2×10 lb DBs)</span></div><span class="ex-sets">3 × 12</span></div><p class="ex-note">Hinge at hips, push them back. Feel the hamstring stretch at the bottom. Drive hips forward to stand — not a squat.</p><p class="ex-tip">💡 Run the DBs down your thighs — they should almost graze your legs</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Donkey Kick (Bodyweight)</span></div><span class="ex-sets">3 × 15 each</span></div><p class="ex-note">On all fours. Keep knee bent at 90°. Kick foot straight up toward ceiling. Pause at top. Lower with control. Do all reps one side, then switch.</p><p class="ex-tip">💡 Don't arch your lower back — keep hips square to the floor throughout</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Clam Shell (Band)</span></div><span class="ex-sets">3 × 15 each</span></div><p class="ex-note">Band above knees. Lie on side, knees bent. Rotate top knee up like a clam. Keep feet together, hips stacked — don't roll back.</p><p class="ex-tip">💡 This works the glute medius — critical for that rounded outer look</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-abs"></span><span class="ex-name">Dead Bug</span></div><span class="ex-sets">3 × 10 each side</span></div><p class="ex-note">Lie on back, arms up, knees 90°. Lower opposite arm + leg slowly. Lower back stays pressed to floor the entire time.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-abs"></span><span class="ex-name">Plank Hold</span></div><span class="ex-sets">3 × 30 sec</span></div><p class="ex-note">Forearm plank. Brace your abs, squeeze glutes, breathe. No sagging hips, no hiking the butt up.</p></div>
-          </div>
-        </div>
-        <!-- DAY B -->
-        <div class="day-card" onclick="toggleDay(this)">
-          <div class="day-header">
-            <div class="day-header-left">
-              <h3>Day B — Knee Dominant + Abs</h3>
-              <p>7 exercises · ~70 min · <span class="badge badge-lime">Glute Focus</span></p>
-            </div>
-            <svg class="day-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
-          <div class="day-body">
-            <div class="warmup-row"><p class="warmup-title">Warm-up (5–7 min)</p><p>Leg swings x 10 each · Bodyweight squat x 15 slow · Lateral band walks 15 steps each · Ankle rolls</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Goblet Squat (10 lb DB)</span></div><span class="ex-sets">3 × 15</span></div><p class="ex-note">Hold one DB at chest. Feet shoulder-width, toes slightly out. Sit back and down — chest tall. Drive through full foot back up.</p><p class="ex-tip">💡 Think "spread the floor" with your feet as you stand — activates glutes harder</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Bulgarian Split Squat (DB)</span></div><span class="ex-sets">3 × 10 each</span></div><p class="ex-note">Rear foot on couch, front foot far enough forward that shin stays vertical. Lower slowly (3 sec down). Drive through front heel up.</p><p class="ex-tip">💡 Hardest exercise in this program — if form breaks, drop the weight immediately</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Reverse Lunge (DBs)</span></div><span class="ex-sets">3 × 12 each</span></div><p class="ex-note">Step back and lower. Front knee stays behind toes. Keep front heel grounded. Step feet back together. Alternate or do all one side.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Fire Hydrant (Bodyweight)</span></div><span class="ex-sets">3 × 15 each</span></div><p class="ex-note">On all fours. Keeping knee bent 90°, lift leg out to the side — like a dog at a fire hydrant. Keep hips level — don't tilt. Slow lower.</p><p class="ex-tip">💡 Works the upper glute medius — targets the area above the hip for that shelf look</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Band Side Step</span></div><span class="ex-sets">3 × 15 each way</span></div><p class="ex-note">Band above knees, slight squat position. Step out wide, then bring feet together. Stay low the whole time. Don't let knees collapse in.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-abs"></span><span class="ex-name">Bicycle Crunch</span></div><span class="ex-sets">3 × 20 total</span></div><p class="ex-note">Slow and controlled. Fully extend the straight leg low. Rotate your elbow toward the opposite knee — not just your head.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-abs"></span><span class="ex-name">Leg Raise</span></div><span class="ex-sets">3 × 12</span></div><p class="ex-note">Lie flat. Lower back pressed to floor. Raise both legs to 90°, lower slowly without touching floor. Keep core braced throughout.</p></div>
-          </div>
-        </div>
-        <!-- DAY C -->
-        <div class="day-card" onclick="toggleDay(this)">
-          <div class="day-header">
-            <div class="day-header-left">
-              <h3>Day C — Full Glute + Abs Finisher</h3>
-              <p>8 exercises · ~75 min · <span class="badge badge-lime">Glute Focus</span></p>
-            </div>
-            <svg class="day-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
-          <div class="day-body">
-            <div class="warmup-row"><p class="warmup-title">Warm-up (5–7 min)</p><p>Hip thrusts BW x 20 slow · Clam shells x 15 each · Donkey kicks x 10 each · Cat-cow x 10</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Hip Thrust (DB on hips)</span></div><span class="ex-sets">3 × 12</span></div><p class="ex-note">Both DBs resting on hip crease. Upper back on couch. Drive up — hold 1 second at top. This is your main compound — give it everything.</p><p class="ex-tip">💡 Use a folded towel under the DBs if they dig in at the hip crease</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Sumo Squat (DB)</span></div><span class="ex-sets">3 × 15</span></div><p class="ex-note">Wide stance, toes pointed out at 45°. Hold one DB vertically at chest. Squat deep — feel inner thigh and glute stretch.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Donkey Kick + Band</span></div><span class="ex-sets">3 × 15 each</span></div><p class="ex-note">Add a band around ankle/foot this week if available. Same form — kick up and pause. The band adds resistance at the top range where glutes are strongest.</p><p class="ex-tip">💡 Squeeze for a full 1-second count at the top before lowering</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Fire Hydrant + Band</span></div><span class="ex-sets">3 × 15 each</span></div><p class="ex-note">Band above knee. Lift out and slightly back — not straight to the side. Imagine drawing a wide arc with your knee. Full range, controlled lower.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Good Morning (BW)</span></div><span class="ex-sets">3 × 12</span></div><p class="ex-note">Hands behind head or across chest. Hinge forward from hips, soft knee bend. Feel the posterior chain stretch. Squeeze glutes to stand back up.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Frog Pump</span></div><span class="ex-sets">3 × 20</span></div><p class="ex-note">Lie on back, soles of feet together in a diamond shape. Pump hips up and down. Short range, high reps, constant glute tension. Feels intense fast.</p><p class="ex-tip">💡 Great glute burnout — don't skip this one even when tired</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-abs"></span><span class="ex-name">Russian Twist (DB)</span></div><span class="ex-sets">3 × 15 each</span></div><p class="ex-note">Sit back at 45°. Hold one DB. Rotate side to side — tap DB to floor each time. Feet can be planted or lifted for more challenge.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-abs"></span><span class="ex-name">Hollow Body Hold</span></div><span class="ex-sets">3 × 25 sec</span></div><p class="ex-note">Lie flat. Arms overhead. Raise arms, legs, and shoulders off floor. Press lower back down — the whole body forms a gentle hollow. Breathe steadily.</p></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- PHASE 2 -->
-      <div id="p2" class="phase-content">
-        <div class="phase-desc"><strong>Volume Build · Weeks 3–4</strong> — Same exercises, more work. Add a 4th set to all glute compound movements. Use medium/heavy band now. Last set of each main exercise = 1 rep in reserve (stop when you could only do 1 more). Increase DB weight where possible. Rest 90s between compounds.</div>
-        <div class="day-card" onclick="toggleDay(this)">
-          <div class="day-header">
-            <div class="day-header-left">
-              <h3>Day A — Hip Dominant + Abs</h3>
-              <p>4 sets on compounds · <span class="badge badge-phase2">Volume Up</span></p>
-            </div>
-            <svg class="day-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
-          <div class="day-body">
-            <div class="warmup-row"><p class="warmup-title">Warm-up (5–7 min)</p><p>Same as Phase 1 Day A</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Glute Bridge (BW)</span></div><span class="ex-sets">3 × 20</span></div><p class="ex-note">Higher reps now. Add band above knees for abductor engagement. 2-second hold every rep.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Band Hip Thrust (off couch)</span></div><span class="ex-sets">4 × 12</span></div><p class="ex-note">Upgrade to heavy band. 4 sets total. Last set = 1 rep in reserve. Slow and controlled lower (2 sec down).</p><p class="ex-tip">💡 If the band feels easy for all 12, it's time to go heavier</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Romanian Deadlift (DBs)</span></div><span class="ex-sets">4 × 12</span></div><p class="ex-note">4 sets. Slow 3-second lowering phase. Pause at bottom. Drive hard through heels. Last set = 1 RIR.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Donkey Kick (Band)</span></div><span class="ex-sets">4 × 15 each</span></div><p class="ex-note">Add ankle band if available, or loop resistance band around foot. 4 sets. Pause 2 seconds at top.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Clam Shell (Heavy Band)</span></div><span class="ex-sets">4 × 15 each</span></div><p class="ex-note">Upgrade to heavier band. If it's easy, slow down the lowering phase to 3 seconds.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-abs"></span><span class="ex-name">Dead Bug</span></div><span class="ex-sets">4 × 10 each</span></div><p class="ex-note">Add a pause at the fully extended position before returning.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-abs"></span><span class="ex-name">Plank Hold</span></div><span class="ex-sets">4 × 40 sec</span></div><p class="ex-note">Increase hold time. If that's easy, elevate feet on the couch for more challenge.</p></div>
-          </div>
-        </div>
-        <div class="day-card" onclick="toggleDay(this)">
-          <div class="day-header">
-            <div class="day-header-left">
-              <h3>Day B — Knee Dominant + Abs</h3>
-              <p>4 sets on compounds · <span class="badge badge-phase2">Volume Up</span></p>
-            </div>
-            <svg class="day-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
-          <div class="day-body">
-            <div class="warmup-row"><p class="warmup-title">Warm-up (5–7 min)</p><p>Same as Phase 1 Day B</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Goblet Squat (DB)</span></div><span class="ex-sets">4 × 15</span></div><p class="ex-note">Hold heavier DB if available. Add band above knees to cue glutes during squat.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Bulgarian Split Squat (DBs)</span></div><span class="ex-sets">4 × 10 each</span></div><p class="ex-note">Hold both DBs at sides now. 4 sets. Last set = 1 RIR. Take 2 minutes rest between sets — this is demanding.</p><p class="ex-tip">💡 The hardest exercise in the program. Progress here directly builds glute size.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Reverse Lunge (DBs)</span></div><span class="ex-sets">4 × 12 each</span></div><p class="ex-note">4 sets. Slow 2-second lower. Drive hard through front heel. Last set = 1 RIR.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Fire Hydrant (Band)</span></div><span class="ex-sets">4 × 15 each</span></div><p class="ex-note">Add band above knee. 4 sets. Lift as high as you can while keeping hips perfectly level.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Band Side Step</span></div><span class="ex-sets">4 × 15 each</span></div><p class="ex-note">Stay lower in the squat position throughout. Heavier band if you have it.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-abs"></span><span class="ex-name">Bicycle Crunch</span></div><span class="ex-sets">4 × 20 total</span></div><p class="ex-note">Still slow and controlled. If easy, add a 2-second pause at full rotation.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-abs"></span><span class="ex-name">Leg Raise</span></div><span class="ex-sets">4 × 15</span></div><p class="ex-note">Increase reps. Lower legs as close to floor as possible without touching.</p></div>
-          </div>
-        </div>
-        <div class="day-card" onclick="toggleDay(this)">
-          <div class="day-header">
-            <div class="day-header-left">
-              <h3>Day C — Full Glute + Abs Finisher</h3>
-              <p>4 sets on compounds · <span class="badge badge-phase2">Volume Up</span></p>
-            </div>
-            <svg class="day-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
-          <div class="day-body">
-            <div class="warmup-row"><p class="warmup-title">Warm-up (5–7 min)</p><p>Same as Phase 1 Day C</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Hip Thrust (DBs + Band)</span></div><span class="ex-sets">4 × 12</span></div><p class="ex-note">DBs on hips AND band above knees. Heavy band. 4 sets. Last set = 1 RIR. 90s rest.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Sumo Squat (DB)</span></div><span class="ex-sets">4 × 15</span></div><p class="ex-note">Heavier DB. Add pause at bottom for 1 second before driving up.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Donkey Kick (Band)</span></div><span class="ex-sets">4 × 15 each</span></div><p class="ex-note">Band on ankle. 4 sets. Don't rush — controlled tempo, feel the glute contract fully.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Fire Hydrant (Band)</span></div><span class="ex-sets">4 × 15 each</span></div><p class="ex-note">Band above knee. Lift out and slightly back — not purely to the side. Arc the movement.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Good Morning (Light DB)</span></div><span class="ex-sets">3 × 12</span></div><p class="ex-note">Hold one DB at chest or lightly on shoulders. Feel the hamstring stretch and glute squeeze.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Frog Pump</span></div><span class="ex-sets">4 × 20</span></div><p class="ex-note">Higher reps this phase. Place light DB on hips if available for added resistance.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-abs"></span><span class="ex-name">Russian Twist (DB)</span></div><span class="ex-sets">4 × 15 each</span></div><p class="ex-note">Feet elevated off floor this phase. Harder rotation, more core demand.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-abs"></span><span class="ex-name">Hollow Body Hold</span></div><span class="ex-sets">4 × 30 sec</span></div><p class="ex-note">Increase hold time. Arms stay overhead — don't let them drop to make it easier.</p></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- PHASE 3 -->
-      <div id="p3" class="phase-content">
-        <div class="phase-desc"><strong>Intensity Up · Weeks 5–6</strong> — Rep range drops to 8–12 on compounds. Heavier dumbbell introduced (20–25 lb ideally). Last set of hip thrust, RDL, and Bulgarian split squat = <strong>true failure</strong>. All other sets = 1–2 RIR. Rest 2 min between compound sets.</div>
-        <div class="day-card" onclick="toggleDay(this)">
-          <div class="day-header">
-            <div class="day-header-left">
-              <h3>Day A — Hip Dominant + Abs</h3>
-              <p>8–12 reps · Last set to failure · <span class="badge badge-phase3">Intensity</span></p>
-            </div>
-            <svg class="day-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
-          <div class="day-body">
-            <div class="warmup-row"><p class="warmup-title">Warm-up (7 min)</p><p>Extra thorough this phase — heavier loads need more prep. Include 1 warm-up set of hip thrust at 50% before working sets.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Glute Bridge (DB)</span></div><span class="ex-sets">3 × 15</span></div><p class="ex-note">DB across hips. Keep as activation before the heavy hip thrusts. 2-sec hold each rep.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Hip Thrust (Heavy DB + Band)</span></div><span class="ex-sets">4 × 10 — last set FAILURE</span></div><p class="ex-note">Heaviest available weight. Heavy band above knees. Sets 1–3: stop 1–2 reps before failure. Set 4: go until you physically cannot complete a rep with good form.</p><p class="ex-tip">💡 This is the #1 glute builder. Every bit of progress here shows up in your measurements.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Romanian Deadlift (Heavy DBs)</span></div><span class="ex-sets">4 × 10 — last set FAILURE</span></div><p class="ex-note">Heavier weight. 3-second slow lower. Full stretch at bottom. Drive hips forward explosively. Last set to failure.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Donkey Kick (Band, Weighted)</span></div><span class="ex-sets">4 × 12 each</span></div><p class="ex-note">Add ankle weight if available, or double band. Pause 2 sec at top. 4 sets each leg.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Clam Shell (Heavy Band)</span></div><span class="ex-sets">4 × 15 each</span></div><p class="ex-note">Heavy band. Slow 3-sec lower. Should feel a real burn in the side glute by rep 12.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-abs"></span><span class="ex-name">Dead Bug with Pause</span></div><span class="ex-sets">4 × 10 each</span></div><p class="ex-note">3-second pause at the fully extended position each rep.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-abs"></span><span class="ex-name">Plank — Feet Elevated</span></div><span class="ex-sets">4 × 45 sec</span></div><p class="ex-note">Feet on couch. Body straight. This shifts more demand onto upper core and shoulders.</p></div>
-          </div>
-        </div>
-        <div class="day-card" onclick="toggleDay(this)">
-          <div class="day-header">
-            <div class="day-header-left">
-              <h3>Day B — Knee Dominant + Abs</h3>
-              <p>8–12 reps · Last set to failure · <span class="badge badge-phase3">Intensity</span></p>
-            </div>
-            <svg class="day-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
-          <div class="day-body">
-            <div class="warmup-row"><p class="warmup-title">Warm-up (7 min)</p><p>Bodyweight split squat x 8 each · Band walks · Leg swings · 1 warm-up set of split squat at 50% weight</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Banded Goblet Squat</span></div><span class="ex-sets">4 × 12</span></div><p class="ex-note">Band above knees AND heavier DB. Push knees out against the band throughout the squat.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Bulgarian Split Squat (Heavy)</span></div><span class="ex-sets">4 × 8 each — last set FAILURE</span></div><p class="ex-note">Heaviest DBs. Lower rep range, heavier load. 3-second lower, explosive drive up. Last set: go to failure. Rest 2 min between sets — this earns it.</p><p class="ex-tip">💡 If you hit 10+ reps easily on all sets, you need heavier weight</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Step-Up (Chair, DBs)</span></div><span class="ex-sets">4 × 10 each</span></div><p class="ex-note">New exercise this phase. Step up onto sturdy chair, drive through the stepping heel. Don't push off the back foot. Controlled lower.</p><p class="ex-tip">💡 Chair must be completely stable — test it before loading up with DBs</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Fire Hydrant (Heavy Band)</span></div><span class="ex-sets">4 × 15 each</span></div><p class="ex-note">Heavier band now. Arc the movement — up and slightly back. Pause at peak position.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Band Side Step (Low Hold)</span></div><span class="ex-sets">4 × 20 each</span></div><p class="ex-note">Deeper squat position, more steps. Burn those abductors out.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-abs"></span><span class="ex-name">Weighted Bicycle Crunch</span></div><span class="ex-sets">4 × 16 each</span></div><p class="ex-note">Hold light DB against chest for added resistance.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-abs"></span><span class="ex-name">V-Up</span></div><span class="ex-sets">4 × 12</span></div><p class="ex-note">Lie flat, arms overhead. Simultaneously raise legs and torso — reach hands toward feet. Control the lower back down.</p></div>
-          </div>
-        </div>
-        <div class="day-card" onclick="toggleDay(this)">
-          <div class="day-header">
-            <div class="day-header-left">
-              <h3>Day C — Full Glute + Abs Finisher</h3>
-              <p>8–12 reps · Last set to failure · <span class="badge badge-phase3">Intensity</span></p>
-            </div>
-            <svg class="day-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
-          <div class="day-body">
-            <div class="warmup-row"><p class="warmup-title">Warm-up (7 min)</p><p>All the usual activation — this is the biggest session of the week. Don't skip warm-up.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Hip Thrust (Max load)</span></div><span class="ex-sets">4 × 10 — last 2 sets FAILURE</span></div><p class="ex-note">Load it up. Both last sets go to failure this phase. 2-min rest. This is the peak movement.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Single-Leg Hip Thrust</span></div><span class="ex-sets">3 × 10 each</span></div><p class="ex-note">New exercise this phase. One leg extended, one foot flat. Much harder — use bodyweight only first session. Massive glute isolation.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Donkey Kick (Max Resistance)</span></div><span class="ex-sets">4 × 12 each</span></div><p class="ex-note">Heaviest band or ankle weight available. Every rep a true contraction at the top.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Fire Hydrant (Max Resistance)</span></div><span class="ex-sets">4 × 12 each</span></div><p class="ex-note">Both donkey kick AND fire hydrant on same side before switching — brutal side glute superset.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Sumo Squat (Heavy)</span></div><span class="ex-sets">4 × 10</span></div><p class="ex-note">Deep range, slow tempo, heavy DB. Feel every inch of the squat.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Frog Pump (Weighted)</span></div><span class="ex-sets">3 × 25</span></div><p class="ex-note">Light DB on hips. High reps, non-stop. The burn here is intense and that's the point.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-abs"></span><span class="ex-name">Weighted Russian Twist</span></div><span class="ex-sets">4 × 15 each</span></div><p class="ex-note">DB held out at arm's length for more lever difficulty.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-abs"></span><span class="ex-name">Hollow Body Hold</span></div><span class="ex-sets">4 × 35 sec</span></div><p class="ex-note">This is your finisher. Breathe steady. Maintain the hollow through the entire hold.</p></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- PHASE 4 -->
-      <div id="p4" class="phase-content">
-        <div class="phase-desc"><strong>Peak Effort · Weeks 7–8</strong> — Highest volume and intensity of the whole program. Push last 2 sets of every compound to or very near failure. End every session with the glute finisher superset. Re-measure at end of week 8.</div>
-        <div class="day-card" onclick="toggleDay(this)">
-          <div class="day-header">
-            <div class="day-header-left">
-              <h3>Day A — Hip Dominant + Abs</h3>
-              <p>5 sets · Push to failure · <span class="badge badge-yellow">Peak</span></p>
-            </div>
-            <svg class="day-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
-          <div class="day-body">
-            <div class="warmup-row"><p class="warmup-title">Warm-up (8 min)</p><p>Thorough activation. Two warm-up sets of hip thrust at 40% and 65% before working sets.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Hip Thrust — Peak Load</span></div><span class="ex-sets">5 × 10 — last 2 FAILURE</span></div><p class="ex-note">Maximum load. 2-second pause at top every rep. Last two sets go to complete failure. Rest 2–2.5 min. This is the hardest the program gets.</p><p class="ex-tip">💡 Record yourself from the side to check form doesn't break under fatigue</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Romanian Deadlift</span></div><span class="ex-sets">5 × 10 — last 2 FAILURE</span></div><p class="ex-note">5 sets, heavy. Slow eccentrics (3 sec down). Last 2 sets = failure. Rest 2 min.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Single-Leg Hip Thrust</span></div><span class="ex-sets">4 × 10 each</span></div><p class="ex-note">Should feel much more controlled than week 5 now. Add light DB on hip if ready.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Donkey Kick (Max)</span></div><span class="ex-sets">4 × 15 each</span></div><p class="ex-note">Maximum resistance. Slow and controlled, 1-sec hold at top every rep.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Clam Shell (Heavy Band)</span></div><span class="ex-sets">4 × 15 each</span></div><p class="ex-note">To failure on last set. Side glutes should be burning.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">FINISHER SUPERSET</span></div><span class="ex-sets">3 rounds, no rest</span></div><p class="ex-note">20 frog pumps → 20 banded donkey kicks each side → 20 fire hydrants each side. Back to back with zero rest within the round. 90 sec between rounds.</p><p class="ex-tip">💡 This finisher is brutal. It's supposed to be. It's only 10 minutes.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-abs"></span><span class="ex-name">Plank Variations Circuit</span></div><span class="ex-sets">3 rounds</span></div><p class="ex-note">Side plank 30s left → front plank 45s → side plank 30s right. No rest within circuit. 60s between rounds.</p></div>
-          </div>
-        </div>
-        <div class="day-card" onclick="toggleDay(this)">
-          <div class="day-header">
-            <div class="day-header-left">
-              <h3>Day B — Knee Dominant + Abs</h3>
-              <p>5 sets · Push to failure · <span class="badge badge-yellow">Peak</span></p>
-            </div>
-            <svg class="day-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
-          <div class="day-body">
-            <div class="warmup-row"><p class="warmup-title">Warm-up (8 min)</p><p>Full activation including warm-up split squat sets. Don't rush this before heavy singles.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Bulgarian Split Squat (Peak)</span></div><span class="ex-sets">5 × 8 each — last 2 FAILURE</span></div><p class="ex-note">5 sets per leg. Heaviest weight. Last 2 sets = failure. Take 2.5 min rest. Log every set — this data tells you if you've progressed.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Banded Goblet Squat</span></div><span class="ex-sets">4 × 12 — last set FAILURE</span></div><p class="ex-note">Heaviest DB, heavy band. Pause 2 sec at bottom. Explosive drive up.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Step-Up (Heavy, DBs)</span></div><span class="ex-sets">4 × 10 each</span></div><p class="ex-note">Maximum DB load you can step with safely. Drive purely through stepping heel.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Fire Hydrant (Max Band)</span></div><span class="ex-sets">4 × 15 each</span></div><p class="ex-note">Last set to failure. The side glute (medius) gets a lot of attention this week.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">FINISHER SUPERSET</span></div><span class="ex-sets">3 rounds, no rest</span></div><p class="ex-note">20 frog pumps → 20 donkey kicks each → 20 fire hydrants each. Same brutal finisher as Day A. Every session this week ends this way.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-abs"></span><span class="ex-name">V-Up + Hollow Combo</span></div><span class="ex-sets">4 × 10 + 30 sec</span></div><p class="ex-note">10 V-ups, then immediately hold hollow body for 30 sec. That's 1 set. Rest 60s. Repeat 4 times.</p></div>
-          </div>
-        </div>
-        <div class="day-card" onclick="toggleDay(this)">
-          <div class="day-header">
-            <div class="day-header-left">
-              <h3>Day C — Full Peak Session + Measure</h3>
-              <p>5 sets · Max effort · <span class="badge badge-yellow">Week 8 Final</span></p>
-            </div>
-            <svg class="day-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
-          <div class="day-body">
-            <div class="warmup-row"><p class="warmup-title">Warm-up + Final Measurement Reminder</p><p>Before this session: measure glute circumference (same spot, same conditions as baseline). Log it. Then warm up and go all out.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Hip Thrust — Absolute Max</span></div><span class="ex-sets">5 × 10 — all sets near failure</span></div><p class="ex-note">Everything you have. Every set pushed. 2-sec pause at top. This is your final benchmark set.</p><p class="ex-tip">💡 Think back to week 1. That weight and those reps should feel easy now.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Single-Leg Hip Thrust</span></div><span class="ex-sets">4 × 12 each</span></div><p class="ex-note">With light DB on hip now. Much stronger than week 5.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Donkey Kick + Fire Hydrant Superset</span></div><span class="ex-sets">4 × 15+15 each side</span></div><p class="ex-note">Do all 15 donkey kicks on one side, immediately 15 fire hydrants same side — then switch. 90s rest between rounds.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Sumo Squat + Goblet Squat Superset</span></div><span class="ex-sets">3 × 10+10</span></div><p class="ex-note">10 sumo immediately into 10 goblet. Heavy on both. 90s rest.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">FINAL FINISHER SUPERSET</span></div><span class="ex-sets">3 rounds</span></div><p class="ex-note">25 frog pumps → 25 donkey kicks each → 25 fire hydrants each. No rest within rounds. You've earned this burnout.</p></div>
-            <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-abs"></span><span class="ex-name">Full Abs Circuit</span></div><span class="ex-sets">3 rounds</span></div><p class="ex-note">10 V-ups → 20 bicycle crunches → 15 leg raises → 30s hollow hold. No rest within circuit. 90s between rounds.</p></div>
-          </div>
-        </div>
+    <div class="day-card" onclick="toggleDay(this)">
+      <div class="day-header"><div class="day-header-left"><h3>Day B — Knee Dominant + Abs</h3><p>7 exercises · ~70 min · <span class="badge badge-lime">Glute Focus</span></p></div><svg class="day-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+      <div class="day-body">
+        <div class="warmup-row"><p class="warmup-title">Warm-up (5–7 min)</p><p>Leg swings x10 each · BW squat x15 slow · Lateral band walks 15 steps each · Ankle rolls</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Goblet Squat (10 lb DB)</span></div><span class="ex-sets">3 × 15</span></div><p class="ex-note">Hold one DB at chest. Feet shoulder-width, toes slightly out. Sit back and down — chest tall.</p><p class="ex-tip">💡 Think "spread the floor" with the feet as you stand — activates glutes harder</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Bulgarian Split Squat (DB)</span></div><span class="ex-sets">3 × 10 each</span></div><p class="ex-note">Rear foot on couch, front foot far forward. Lower slowly (3 sec down). Drive through front heel up.</p><p class="ex-tip">💡 Hardest exercise in this program — if form breaks, drop the weight</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Reverse Lunge (DBs)</span></div><span class="ex-sets">3 × 12 each</span></div><p class="ex-note">Step back and lower. Front knee behind toes. Front heel grounded. Step feet back together.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Fire Hydrant (Bodyweight)</span></div><span class="ex-sets">3 × 15 each</span></div><p class="ex-note">On all fours. Lift leg out to the side — like a dog at a fire hydrant. Keep hips level. Slow lower.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Band Side Step</span></div><span class="ex-sets">3 × 15 each way</span></div><p class="ex-note">Band above knees, slight squat position. Step out wide, then bring feet together. Stay low throughout.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-abs"></span><span class="ex-name">Bicycle Crunch</span></div><span class="ex-sets">3 × 20 total</span></div><p class="ex-note">Slow and controlled. Fully extend the straight leg low. Rotate elbow toward opposite knee.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-abs"></span><span class="ex-name">Leg Raise</span></div><span class="ex-sets">3 × 12</span></div><p class="ex-note">Lower back pressed to floor. Raise both legs to 90°, lower slowly without touching floor.</p></div>
       </div>
     </div>
-
-    <!-- NUTRITION -->
-    <div id="screen-nutrition" class="screen">
-      <div class="cal-card">
-        <div class="big">1,900</div>
-        <p>calories per day · slight surplus for muscle growth</p>
-      </div>
-      <div class="macro-grid">
-        <div class="macro-card"><div class="macro-val" style="color:var(--green);">110g</div><div class="macro-label">Protein daily</div></div>
-        <div class="macro-card"><div class="macro-val" style="color:var(--lime-text);">210g</div><div class="macro-label">Carbs daily</div></div>
-        <div class="macro-card"><div class="macro-val" style="color:var(--yellow-dark);">60g</div><div class="macro-label">Fats daily</div></div>
-        <div class="macro-card"><div class="macro-val" style="color:var(--ink-light);">100 lbs</div><div class="macro-label">Body weight</div></div>
-      </div>
-
-      <div class="tip-card">
-        <h4>Why a slight surplus?</h4>
-        <p>At 100 lbs / 5'2", maintenance is roughly 1,600–1,750 cal/day with 3x weekly training. To actually build glute muscle you need to eat slightly above that. Cutting while trying to grow glutes = very slow results. A 200–300 calorie surplus is the sweet spot.</p>
-      </div>
-
-      <div class="section-title">Sample Day of Eating</div>
-      <div class="meal-card"><h4>Breakfast</h4><p>3 scrambled eggs + 2 slices whole grain toast + 1 tbsp peanut butter</p><p class="macros">~480 cal · 30g protein · 40g carbs · 18g fat</p></div>
-      <div class="meal-card"><h4>Lunch</h4><p>Grilled chicken wrap — 4 oz chicken, whole wheat tortilla, lettuce, tomato, Greek yogurt dressing</p><p class="macros">~500 cal · 38g protein · 45g carbs · 12g fat</p></div>
-      <div class="meal-card"><h4>Post-Workout Snack</h4><p>Greek yogurt (full fat, 5 oz) + banana + drizzle of honey</p><p class="macros">~300 cal · 15g protein · 42g carbs · 5g fat</p></div>
-      <div class="meal-card"><h4>Dinner</h4><p>Salmon fillet + 7 oz sweet potato + roasted vegetables + olive oil drizzle</p><p class="macros">~550 cal · 38g protein · 55g carbs · 18g fat</p></div>
-      <div class="meal-card"><h4>Evening</h4><p>Cottage cheese (3.5 oz) or protein shake if needed to hit daily target</p><p class="macros">~100–150 cal · 15–20g protein</p></div>
-
-      <div class="section-title">Protein Tips</div>
-      <div class="tip-card"><h4>Hit 110g protein daily — this is non-negotiable</h4><p>Protein is the direct building block for glute muscle. Spread it across 3–4 meals with 25–35g per meal. Best sources: chicken breast, eggs, Greek yogurt, cottage cheese, salmon, tuna, lean beef, protein shakes.</p></div>
-      <div class="tip-card"><h4>Don't fear carbs</h4><p>Carbs fuel the workouts and replenish muscle glycogen for recovery. Rice, oats, sweet potato, fruit, whole wheat bread — all great options. Eat more carbs on training days, slightly fewer on rest days if you want to be precise.</p></div>
-      <div class="tip-card"><h4>Creatine Monohydrate — 3–5g daily</h4><p>The single most researched and effective supplement available. Mix into any drink, any time of day. Takes 2–3 weeks to fully saturate. Increases strength, power, and muscle volume. Completely safe. No loading phase needed — just 3–5g every single day consistently.</p></div>
-      <div class="tip-card"><h4>Hydration</h4><p>Aim for at least 80–100 oz of water daily. Dehydration shows up as reduced strength and poor muscle pump. Add electrolytes (a pinch of salt, some fruit) after sweaty sessions.</p></div>
-    </div>
-
-    <!-- EQUIPMENT -->
-    <div id="screen-equipment" class="screen">
-      <div class="section-title">Already Owned ✓</div>
-      <div class="equip-card equip-already">
-        <h3>2 × 10 lb Dumbbells</h3>
-        <p>Sufficient for weeks 1–4 on most exercises. Will become a limiting factor on hip thrusts and RDLs by week 5.</p>
-      </div>
-      <div class="equip-card equip-already">
-        <h3>Couch / Sturdy Chair</h3>
-        <p>Works perfectly as a hip thrust bench and rear foot elevation for Bulgarian split squats. Must be on a non-slip surface.</p>
-      </div>
-
-      <div class="section-title">Priority 1 — Buy Before Day 1</div>
-      <div class="equip-card">
-        <h3>Resistance Band Set (Loop Bands) <span class="equip-priority pri-must">MUST HAVE</span></h3>
-        <div class="price">~$15–25</div>
-        <p>Get a set with light, medium, and heavy resistance. Used for hip thrusts, donkey kicks, fire hydrants, clam shells, side steps, and squats. Essential from day one — many exercises require them.</p>
-        <div class="pill-row"><span class="badge badge-lime">Hip Thrusts</span><span class="badge badge-lime">Donkey Kicks</span><span class="badge badge-lime">Fire Hydrants</span><span class="badge badge-lime">Clam Shells</span></div>
-      </div>
-      <div class="equip-card">
-        <h3>Exercise Mat <span class="equip-priority pri-must">MUST HAVE</span></h3>
-        <div class="price">~$15–20</div>
-        <p>Hip thrusts, donkey kicks, fire hydrants, and floor ab work are very uncomfortable on hard floors without a mat. Get at least a 6mm thickness.</p>
-      </div>
-
-      <div class="section-title">Priority 2 — Buy by Week 5</div>
-      <div class="equip-card">
-        <h3>Heavier Dumbbell(s) — 20–25 lb <span class="equip-priority pri-soon">BY WEEK 5</span></h3>
-        <div class="price">~$25–50 for a single / $60–120 for a pair</div>
-        <p>Progress will stall on hip thrusts and RDLs without heavier weight. One 25 lb dumbbell covers hip thrusts well. A pair opens up more bilateral movements.</p>
-      </div>
-      <div class="equip-card">
-        <h3>Ankle Weights (5–10 lb set) <span class="equip-priority pri-soon">BY WEEK 5</span></h3>
-        <div class="price">~$20–35</div>
-        <p>Adds meaningful resistance to donkey kicks and fire hydrants without needing a band anchor. Great for increasing intensity on the floor exercises that drive glute medius growth.</p>
-      </div>
-
-      <div class="section-title">Optional — Later Investment</div>
-      <div class="equip-card">
-        <h3>Adjustable Dumbbell Set <span class="equip-priority pri-later">OPTIONAL</span></h3>
-        <div class="price">~$100–200 (PowerBlock, Bowflex, etc.)</div>
-        <p>If she commits long-term, adjustable DBs from 5–50 lb in one unit are a game-changer. Eliminates the need to keep buying fixed weights.</p>
-      </div>
-      <div class="equip-card">
-        <h3>Doorframe Pull-Up Bar <span class="equip-priority pri-later">OPTIONAL</span></h3>
-        <div class="price">~$20–35</div>
-        <p>Opens up upper body work once the glute program is established. Also works for hanging ab exercises (knee raises, leg raises) which are more challenging than floor versions.</p>
-      </div>
-      <div class="equip-card">
-        <h3>Hip Thrust Pad / Barbell Pad <span class="equip-priority pri-later">OPTIONAL</span></h3>
-        <div class="price">~$15–25</div>
-        <p>If DBs dig into the hip crease during thrusts, a thick foam pad makes heavier loading much more comfortable. A folded towel works in the meantime.</p>
+    <div class="day-card" onclick="toggleDay(this)">
+      <div class="day-header"><div class="day-header-left"><h3>Day C — Full Glute + Abs Finisher</h3><p>8 exercises · ~75 min · <span class="badge badge-lime">Glute Focus</span></p></div><svg class="day-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+      <div class="day-body">
+        <div class="warmup-row"><p class="warmup-title">Warm-up (5–7 min)</p><p>Hip thrusts BW x20 slow · Clam shells x15 each · Donkey kicks x10 each · Cat-cow x10</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Hip Thrust (DBs on hips)</span></div><span class="ex-sets">3 × 12</span></div><p class="ex-note">Both DBs on hip crease. Upper back on couch. Drive up — hold 1 sec at top. Main compound.</p><p class="ex-tip">💡 Use a folded towel under the DBs if they dig into the hip crease</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Sumo Squat (DB)</span></div><span class="ex-sets">3 × 15</span></div><p class="ex-note">Wide stance, toes 45°. Hold one DB vertically at chest. Squat deep — feel inner thigh and glute stretch.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Donkey Kick + Band</span></div><span class="ex-sets">3 × 15 each</span></div><p class="ex-note">Loop band around ankle if available. Same form — kick up and pause 1 sec at top.</p><p class="ex-tip">💡 Band adds resistance at the top range where glutes are strongest</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Fire Hydrant + Band</span></div><span class="ex-sets">3 × 15 each</span></div><p class="ex-note">Band above knee. Lift out and slightly back — not straight to the side. Draw a wide arc with the knee.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Good Morning (BW)</span></div><span class="ex-sets">3 × 12</span></div><p class="ex-note">Hands behind head. Hinge forward from hips, soft knee bend. Squeeze glutes to stand back up.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Frog Pump</span></div><span class="ex-sets">3 × 20</span></div><p class="ex-note">Lie on back, soles of feet together. Pump hips up and down. Short range, high reps, constant glute tension.</p><p class="ex-tip">💡 Great burnout — don't skip even when tired</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-abs"></span><span class="ex-name">Russian Twist (DB)</span></div><span class="ex-sets">3 × 15 each</span></div><p class="ex-note">Sit back at 45°. Hold one DB. Rotate side to side — tap DB to floor each time.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-abs"></span><span class="ex-name">Hollow Body Hold</span></div><span class="ex-sets">3 × 25 sec</span></div><p class="ex-note">Arms overhead. Raise arms, legs, and shoulders off floor. Press lower back down. Breathe steadily.</p></div>
       </div>
     </div>
-
-    <!-- PROGRESSION -->
-    <div id="screen-progress" class="screen">
-      <div class="section-title">Tracking Your Progress</div>
-      <div class="prog-hero">
-        <h3 style="font-size:15px; font-weight:600; margin-bottom:6px;">Baseline Measurements</h3>
-        <p style="font-size:13px; color:var(--ink-light); margin-bottom:12px;">Glute circumference baseline: <strong>31 inches</strong> (measured ~2 weeks ago). Re-measure at end of week 4 and week 8.</p>
-        <div class="prog-bar-wrap">
-          <div class="prog-bar-label"><span>Program start</span><span>Week 8 goal</span></div>
-          <div class="prog-bar"><div class="prog-bar-fill" id="bar-fill"></div></div>
-          <p style="font-size:11px; color:var(--ink-pale); margin-top:4px;">Realistic expectation: 0.5–1 inch gain by week 8 with consistent nutrition and training</p>
-        </div>
-      </div>
-
-      <div class="section-title">How to Measure Correctly</div>
-      <div class="rule-card"><h4>📏 Glute Circumference</h4><p>Measure at the widest point of the glutes — usually a few inches below the waist. Tape measure should be parallel to the floor. Measure relaxed (not flexed). Always same time of day (morning is most consistent). Same spot every time.</p></div>
-      <div class="rule-card"><h4>📸 Progress Photos</h4><p>Same lighting, same angle (front, side, back), same time of day, every 2 weeks. Photos reveal changes that the scale and tape miss — particularly shape and composition shifts.</p></div>
-      <div class="rule-card"><h4>⚖️ Scale Weight</h4><p>Expect slow gain — 0.5–1 lb per month is ideal for lean muscle gain at her stats. Scale will fluctuate daily with water and food — track weekly averages, not single weigh-ins. Weigh morning after bathroom, before eating.</p></div>
-      <div class="rule-card"><h4>📓 Workout Log</h4><p>Log every session: exercise, sets, reps, weight used. A set that's harder this week than last week = you're progressing. If the numbers aren't going up after 3+ sessions, something needs to change (usually nutrition or sleep).</p></div>
-
-      <div class="section-title">Progressive Overload Rules</div>
-      <div class="tip-card"><h4>When to increase weight or resistance</h4><p>When she can complete ALL sets with 2+ reps to spare comfortably, it's time to go heavier. Don't add reps indefinitely — go up in load. On hip thrust, expect to increase resistance every 2–3 weeks minimum if nutrition is right.</p></div>
-      <div class="tip-card"><h4>How to increase when you don't have heavier weights</h4><p>Slow the tempo (3-second lower). Add a pause at the hardest point. Use heavier band. Reduce rest time. Add reps. Superset two exercises. All of these increase difficulty without needing more weight.</p></div>
-
-      <div class="section-title">Red Flags to Watch</div>
-      <div class="warning-card"><h4>⚠️ Lower back pain during RDL or hip thrust</h4><p>Stop the exercise. Likely cause: rounding the spine (RDL) or hyperextending at the top (hip thrust). Lower the weight, review form. Pain ≠ effort — form breaks first.</p></div>
-      <div class="warning-card"><h4>⚠️ Knees caving inward on squats</h4><p>Reduce weight immediately. Add band above knees to cue abductors. This puts heavy stress on the knee joint and must be corrected before loading up.</p></div>
-      <div class="warning-card"><h4>⚠️ No strength gain by week 4</h4><p>Almost always a nutrition issue. Check calories — likely undereating and not recovering between sessions. Increase food intake, especially protein and carbs.</p></div>
-      <div class="warning-card"><h4>⚠️ Feeling flat and fatigued every session</h4><p>If 3+ sessions in a row feel terrible, take a deload week — train at 50% volume with light loads. This is a feature, not a failure. Recovery is when muscle actually grows.</p></div>
-      <div class="warning-card"><h4>⚠️ No glute activation / feeling it in quads only</h4><p>Mind-muscle connection needs work. Before each exercise, do 10 slow BW glute bridges squeezing hard at the top. Pre-activating the glute helps your brain recruit it during heavier movements.</p></div>
-
-      <div class="section-title">Sleep & Recovery</div>
-      <div class="rule-card"><h4>😴 Sleep is where muscle is built</h4><p>Aim for 7–9 hours. Muscle is not built during the workout — it's built during sleep when growth hormone is released. Poor sleep = poor gains, regardless of how hard she trains. Non-negotiable.</p></div>
-      <div class="rule-card"><h4>🚶 Active rest days</h4><p>Walk, stretch, yoga, or light mobility on rest days. Complete inactivity stiffens up muscles. 20–30 minutes of easy movement improves recovery and reduces soreness for the next session.</p></div>
-    </div>
-
   </div>
 
-  <!-- BOTTOM NAV -->
-  <nav class="bottom-nav">
-    <button class="nav-btn active" onclick="showScreen('home',this)">
-      <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-      <span>Home</span>
+  <div id="p2" class="phase-content">
+    <div class="phase-desc"><strong>Volume Build · Weeks 3–4</strong> — Same exercises, more work. Add a 4th set to all glute compounds. Use medium/heavy band. Last set of each main exercise = 1 RIR. Increase DB weight where possible. Rest 90s between compounds.</div>
+    <div class="day-card" onclick="toggleDay(this)">
+      <div class="day-header"><div class="day-header-left"><h3>Day A — Hip Dominant + Abs</h3><p>4 sets on compounds · <span class="badge badge-phase2">Volume Up</span></p></div><svg class="day-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+      <div class="day-body">
+        <div class="warmup-row"><p class="warmup-title">Warm-up</p><p>Same as Phase 1 Day A. Add band above knees on glute bridges.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Glute Bridge (BW + Band)</span></div><span class="ex-sets">3 × 20</span></div><p class="ex-note">Band above knees. Higher reps. 2-sec hold every rep.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Band Hip Thrust</span></div><span class="ex-sets">4 × 12 — last set 1 RIR</span></div><p class="ex-note">Upgrade to heavy band. 4 sets. Slow 2-sec lower.</p><p class="ex-tip">💡 If band feels easy for all 12, go heavier</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Romanian Deadlift</span></div><span class="ex-sets">4 × 12 — last set 1 RIR</span></div><p class="ex-note">4 sets. Slow 3-sec lowering phase. Pause at bottom. Last set = 1 RIR.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Donkey Kick (Band)</span></div><span class="ex-sets">4 × 15 each</span></div><p class="ex-note">Band looped around ankle. 4 sets. Pause 2 sec at top each rep.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Fire Hydrant (Band)</span></div><span class="ex-sets">4 × 15 each</span></div><p class="ex-note">Band above knee. If easy, slow the lowering phase to 3 seconds.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-abs"></span><span class="ex-name">Dead Bug (with pause)</span></div><span class="ex-sets">4 × 10 each</span></div><p class="ex-note">Add a pause at fully extended position before returning.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-abs"></span><span class="ex-name">Plank Hold</span></div><span class="ex-sets">4 × 40 sec</span></div><p class="ex-note">Increase hold time. Elevate feet on couch for extra challenge.</p></div>
+      </div>
+    </div>
+    <div class="day-card" onclick="toggleDay(this)">
+      <div class="day-header"><div class="day-header-left"><h3>Day B — Knee Dominant + Abs</h3><p>4 sets on compounds · <span class="badge badge-phase2">Volume Up</span></p></div><svg class="day-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+      <div class="day-body">
+        <div class="warmup-row"><p class="warmup-title">Warm-up</p><p>Same as Phase 1 Day B</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Goblet Squat + Band</span></div><span class="ex-sets">4 × 15</span></div><p class="ex-note">Heavier DB + band above knees. Push knees out against band throughout.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Bulgarian Split Squat (both DBs)</span></div><span class="ex-sets">4 × 10 each — last set 1 RIR</span></div><p class="ex-note">Hold both DBs at sides. 4 sets. Last set = 1 RIR. 2 min rest between — this earns it.</p><p class="ex-tip">💡 Progress here directly builds glute size</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Reverse Lunge (DBs)</span></div><span class="ex-sets">4 × 12 each — last set 1 RIR</span></div><p class="ex-note">4 sets. Slow 2-sec lower. Drive hard through front heel.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Fire Hydrant (Band)</span></div><span class="ex-sets">4 × 15 each</span></div><p class="ex-note">Band above knee. Lift as high as possible while keeping hips level.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Band Side Step</span></div><span class="ex-sets">4 × 15 each</span></div><p class="ex-note">Stay lower in squat position. Heavier band if available.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-abs"></span><span class="ex-name">Bicycle Crunch</span></div><span class="ex-sets">4 × 20</span></div><p class="ex-note">2-sec pause at full rotation if easy.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-abs"></span><span class="ex-name">Leg Raise</span></div><span class="ex-sets">4 × 15</span></div><p class="ex-note">Lower legs as close to floor as possible without touching.</p></div>
+      </div>
+    </div>
+    <div class="day-card" onclick="toggleDay(this)">
+      <div class="day-header"><div class="day-header-left"><h3>Day C — Full Glute + Abs Finisher</h3><p>4 sets on compounds · <span class="badge badge-phase2">Volume Up</span></p></div><svg class="day-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+      <div class="day-body">
+        <div class="warmup-row"><p class="warmup-title">Warm-up</p><p>Same as Phase 1 Day C</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Hip Thrust (DBs + Band)</span></div><span class="ex-sets">4 × 12 — last set 1 RIR</span></div><p class="ex-note">DBs on hips AND band above knees. Heavy band. 4 sets. 90s rest.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Sumo Squat (DB)</span></div><span class="ex-sets">4 × 15</span></div><p class="ex-note">Heavier DB. Pause 1 sec at bottom before driving up.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Donkey Kick (Band)</span></div><span class="ex-sets">4 × 15 each</span></div><p class="ex-note">4 sets. Don't rush — controlled tempo, full glute contraction.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Fire Hydrant (Band)</span></div><span class="ex-sets">4 × 15 each</span></div><p class="ex-note">Band above knee. Lift out and slightly back. Arc the movement, not purely to the side.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Good Morning (Light DB)</span></div><span class="ex-sets">3 × 12</span></div><p class="ex-note">Hold DB at chest. Feel the hamstring stretch and glute squeeze.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Frog Pump</span></div><span class="ex-sets">4 × 20</span></div><p class="ex-note">Place light DB on hips if available. Higher reps this phase.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-abs"></span><span class="ex-name">Russian Twist (DB, feet elevated)</span></div><span class="ex-sets">4 × 15 each</span></div><p class="ex-note">Feet off floor this phase. More core demand.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-abs"></span><span class="ex-name">Hollow Body Hold</span></div><span class="ex-sets">4 × 30 sec</span></div><p class="ex-note">Arms overhead — don't let them drop to make it easier.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="p3" class="phase-content">
+    <div class="phase-desc"><strong>Intensity Up · Weeks 5–6</strong> — Rep range drops to 8–12 on compounds. Heavier dumbbell introduced (20–25 lb). Last set of hip thrust, RDL, and Bulgarian split squat = true failure. All other sets = 1–2 RIR. Rest 2 min between compound sets.</div>
+    <div class="day-card" onclick="toggleDay(this)">
+      <div class="day-header"><div class="day-header-left"><h3>Day A — Hip Dominant + Abs</h3><p>8–12 reps · Last set failure · <span class="badge badge-phase3">Intensity</span></p></div><svg class="day-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+      <div class="day-body">
+        <div class="warmup-row"><p class="warmup-title">Warm-up (7 min)</p><p>Extra thorough — heavier loads need more prep. Include 1 warm-up set of hip thrust at 50% before working sets.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Glute Bridge (DB)</span></div><span class="ex-sets">3 × 15</span></div><p class="ex-note">DB across hips. Activation before heavy hip thrusts. 2-sec hold each rep.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Hip Thrust (Heavy DB + Band)</span></div><span class="ex-sets">4 × 10 — last set FAILURE</span></div><p class="ex-note">Heaviest available weight + heavy band. Sets 1–3: 1–2 RIR. Set 4: go until you cannot complete a rep with good form.</p><p class="ex-tip">💡 This is the #1 glute builder. Every bit of progress shows in measurements.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Romanian Deadlift (Heavy)</span></div><span class="ex-sets">4 × 10 — last set FAILURE</span></div><p class="ex-note">Heavier weight. 3-sec slow lower. Full stretch at bottom. Last set to failure.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Donkey Kick (Heavy Band)</span></div><span class="ex-sets">4 × 12 each</span></div><p class="ex-note">Heavier band or ankle weight. Pause 2 sec at top. 4 sets each leg.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Fire Hydrant (Heavy Band)</span></div><span class="ex-sets">4 × 12 each</span></div><p class="ex-note">Heavy band. Slow 3-sec lower. Real burn in the side glute by rep 10.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-abs"></span><span class="ex-name">Dead Bug with Pause</span></div><span class="ex-sets">4 × 10 each</span></div><p class="ex-note">3-sec pause at fully extended position each rep.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-abs"></span><span class="ex-name">Plank — Feet Elevated</span></div><span class="ex-sets">4 × 45 sec</span></div><p class="ex-note">Feet on couch. Shifts demand to upper core and shoulders.</p></div>
+      </div>
+    </div>
+    <div class="day-card" onclick="toggleDay(this)">
+      <div class="day-header"><div class="day-header-left"><h3>Day B — Knee Dominant + Abs</h3><p>8–12 reps · Last set failure · <span class="badge badge-phase3">Intensity</span></p></div><svg class="day-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+      <div class="day-body">
+        <div class="warmup-row"><p class="warmup-title">Warm-up (7 min)</p><p>BW split squat x8 each · Band walks · Leg swings · 1 warm-up split squat set at 50%</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Banded Goblet Squat</span></div><span class="ex-sets">4 × 12</span></div><p class="ex-note">Band above knees AND heavier DB. Push knees out against band throughout.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Bulgarian Split Squat (Heavy)</span></div><span class="ex-sets">4 × 8 each — last set FAILURE</span></div><p class="ex-note">Heaviest DBs. 3-sec lower, explosive drive up. Last set: go to failure. Rest 2 min between sets.</p><p class="ex-tip">💡 If hitting 10+ reps easily on all sets, need heavier weight</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Step-Up (Chair, DBs)</span></div><span class="ex-sets">4 × 10 each</span></div><p class="ex-note">Step up onto sturdy chair, drive through the stepping heel. Don't push off the back foot. Controlled lower.</p><p class="ex-tip">💡 Chair must be completely stable before loading up with DBs</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Fire Hydrant (Heavy Band)</span></div><span class="ex-sets">4 × 15 each</span></div><p class="ex-note">Heavier band. Arc the movement — up and slightly back. Pause at peak.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Band Side Step (Low Hold)</span></div><span class="ex-sets">4 × 20 each</span></div><p class="ex-note">Deeper squat position, more steps. Burn the abductors out.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-abs"></span><span class="ex-name">Weighted Bicycle Crunch</span></div><span class="ex-sets">4 × 16 each</span></div><p class="ex-note">Hold light DB at chest for resistance.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-abs"></span><span class="ex-name">V-Up</span></div><span class="ex-sets">4 × 12</span></div><p class="ex-note">Arms overhead. Simultaneously raise legs and torso — reach toward feet. Control back down.</p></div>
+      </div>
+    </div>
+    <div class="day-card" onclick="toggleDay(this)">
+      <div class="day-header"><div class="day-header-left"><h3>Day C — Full Glute + Abs Finisher</h3><p>8–12 reps · Last set failure · <span class="badge badge-phase3">Intensity</span></p></div><svg class="day-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+      <div class="day-body">
+        <div class="warmup-row"><p class="warmup-title">Warm-up (7 min)</p><p>Full activation — biggest session of the week. Don't skip warm-up.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Hip Thrust (Max load)</span></div><span class="ex-sets">4 × 10 — last 2 sets FAILURE</span></div><p class="ex-note">Load it up. Both last sets go to failure. 2-min rest. Peak movement.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Single-Leg Hip Thrust</span></div><span class="ex-sets">3 × 10 each</span></div><p class="ex-note">One leg extended, one foot flat. Use bodyweight only first session. Huge glute isolation.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Donkey Kick + Fire Hydrant Superset</span></div><span class="ex-sets">4 × 12+12 each side</span></div><p class="ex-note">All donkey kicks on one side immediately into fire hydrants same side — then switch. 90s between rounds.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Sumo Squat (Heavy)</span></div><span class="ex-sets">4 × 10</span></div><p class="ex-note">Deep range, slow tempo, heavy DB. Feel every inch of the squat.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Frog Pump (Weighted)</span></div><span class="ex-sets">3 × 25</span></div><p class="ex-note">Light DB on hips. High reps, non-stop. The burn is intense and that's the point.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-abs"></span><span class="ex-name">Weighted Russian Twist</span></div><span class="ex-sets">4 × 15 each</span></div><p class="ex-note">DB held out at arm's length for more leverage difficulty.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-abs"></span><span class="ex-name">Hollow Body Hold</span></div><span class="ex-sets">4 × 35 sec</span></div><p class="ex-note">Finisher. Breathe steady. Maintain hollow through entire hold.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="p4" class="phase-content">
+    <div class="phase-desc"><strong>Peak Effort · Weeks 7–8</strong> — Highest volume and intensity. Push last 2 sets of every compound to or near failure. End every session with the glute finisher superset. Re-measure at end of week 8.</div>
+    <div class="day-card" onclick="toggleDay(this)">
+      <div class="day-header"><div class="day-header-left"><h3>Day A — Hip Dominant + Abs</h3><p>5 sets · Push to failure · <span class="badge badge-yellow">Peak</span></p></div><svg class="day-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+      <div class="day-body">
+        <div class="warmup-row"><p class="warmup-title">Warm-up (8 min)</p><p>Thorough activation. Two warm-up sets of hip thrust at 40% and 65% before working sets.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Hip Thrust — Peak Load</span></div><span class="ex-sets">5 × 10 — last 2 FAILURE</span></div><p class="ex-note">Maximum load. 2-sec pause at top every rep. Last two sets to complete failure. Rest 2–2.5 min.</p><p class="ex-tip">💡 Record from the side to check form doesn't break under fatigue</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Romanian Deadlift</span></div><span class="ex-sets">5 × 10 — last 2 FAILURE</span></div><p class="ex-note">5 sets, heavy. Slow eccentrics (3 sec down). Last 2 sets = failure. Rest 2 min.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Single-Leg Hip Thrust</span></div><span class="ex-sets">4 × 10 each</span></div><p class="ex-note">Much more controlled than week 5 now. Add light DB on hip if ready.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Donkey Kick (Max resistance)</span></div><span class="ex-sets">4 × 15 each</span></div><p class="ex-note">Maximum resistance. Slow and controlled, 1-sec hold at top every rep.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Fire Hydrant (Max resistance)</span></div><span class="ex-sets">4 × 15 each</span></div><p class="ex-note">Last set to failure. Side glutes should be burning.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">FINISHER SUPERSET</span></div><span class="ex-sets">3 rounds, no rest within</span></div><p class="ex-note">20 frog pumps → 20 banded donkey kicks each → 20 fire hydrants each. 90 sec between rounds.</p><p class="ex-tip">💡 This finisher is brutal. It's supposed to be. Only 10 minutes.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-abs"></span><span class="ex-name">Plank Variations Circuit</span></div><span class="ex-sets">3 rounds</span></div><p class="ex-note">Side plank 30s left → front plank 45s → side plank 30s right. 60s between rounds.</p></div>
+      </div>
+    </div>
+    <div class="day-card" onclick="toggleDay(this)">
+      <div class="day-header"><div class="day-header-left"><h3>Day B — Knee Dominant + Abs</h3><p>5 sets · Push to failure · <span class="badge badge-yellow">Peak</span></p></div><svg class="day-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+      <div class="day-body">
+        <div class="warmup-row"><p class="warmup-title">Warm-up (8 min)</p><p>Full activation including warm-up split squat sets. Don't rush before heavy loading.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Bulgarian Split Squat (Peak)</span></div><span class="ex-sets">5 × 8 each — last 2 FAILURE</span></div><p class="ex-note">5 sets per leg. Heaviest weight. Last 2 sets = failure. 2.5 min rest. Log every set.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Banded Goblet Squat</span></div><span class="ex-sets">4 × 12 — last set FAILURE</span></div><p class="ex-note">Heaviest DB, heavy band. Pause 2 sec at bottom. Explosive drive up.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Step-Up (Heavy, DBs)</span></div><span class="ex-sets">4 × 10 each</span></div><p class="ex-note">Maximum DB load safely. Drive purely through stepping heel.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Fire Hydrant (Max Band)</span></div><span class="ex-sets">4 × 15 each — last set FAILURE</span></div><p class="ex-note">Last set to failure. Side glute (medius) gets maximum attention this week.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">FINISHER SUPERSET</span></div><span class="ex-sets">3 rounds, no rest within</span></div><p class="ex-note">20 frog pumps → 20 donkey kicks each → 20 fire hydrants each. Every session this week ends here.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-abs"></span><span class="ex-name">V-Up + Hollow Combo</span></div><span class="ex-sets">4 × 10 + 30 sec</span></div><p class="ex-note">10 V-ups then immediately 30s hollow hold. That's 1 set. Rest 60s. Repeat 4 times.</p></div>
+      </div>
+    </div>
+    <div class="day-card" onclick="toggleDay(this)">
+      <div class="day-header"><div class="day-header-left"><h3>Day C — Full Peak Session + Final Measure</h3><p>5 sets · Max effort · <span class="badge badge-yellow">Week 8 Final</span></p></div><svg class="day-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+      <div class="day-body">
+        <div class="warmup-row"><p class="warmup-title">Warm-up + Final Measurement</p><p>Before this session: measure glute circumference (same spot, same conditions as baseline). Log it. Then go all out.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Hip Thrust — Absolute Max</span></div><span class="ex-sets">5 × 10 — all near failure</span></div><p class="ex-note">Everything available. Every set pushed hard. 2-sec pause at top. Final benchmark set.</p><p class="ex-tip">💡 Think back to week 1. That weight should feel easy now.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Single-Leg Hip Thrust (weighted)</span></div><span class="ex-sets">4 × 12 each</span></div><p class="ex-note">Light DB on hip now. Much stronger than week 5.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Donkey Kick + Fire Hydrant Superset</span></div><span class="ex-sets">4 × 15+15 each side</span></div><p class="ex-note">All 15 donkey kicks one side, immediately 15 fire hydrants same side — then switch. 90s rest.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">Sumo + Goblet Squat Superset</span></div><span class="ex-sets">3 × 10+10</span></div><p class="ex-note">10 sumo immediately into 10 goblet. Heavy on both. 90s rest.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-glute"></span><span class="ex-name">FINAL FINISHER SUPERSET</span></div><span class="ex-sets">3 rounds</span></div><p class="ex-note">25 frog pumps → 25 donkey kicks each → 25 fire hydrants each. Earn it.</p></div>
+        <div class="exercise-row"><div class="ex-top"><div><span class="ex-category cat-abs"></span><span class="ex-name">Full Abs Circuit</span></div><span class="ex-sets">3 rounds</span></div><p class="ex-note">10 V-ups → 20 bicycle crunches → 15 leg raises → 30s hollow hold. 90s between rounds.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NUTRITION -->
+<div id="screen-nutrition" class="screen">
+  <div style="display:flex;gap:8px;margin-bottom:10px">
+    <button onclick="switchNutTab('overview',this)" class="phase-tab active" style="flex:1">Overview</button>
+    <button onclick="switchNutTab('meals',this)" class="phase-tab" style="flex:1">Meal Ideas</button>
+    <button onclick="switchNutTab('log',this)" class="phase-tab" style="flex:1">Meal Log</button>
+    <button onclick="switchNutTab('shop',this)" class="phase-tab" style="flex:1">Shopping</button>
+  </div>
+
+  <!-- Overview -->
+  <div id="nut-overview" class="phase-content active">
+    <div class="nut-cal-card">
+      <div class="big">1,900</div>
+      <p>calories per day · slight surplus for muscle growth</p>
+    </div>
+    <div class="macro-grid">
+      <div class="macro-card"><div class="macro-val" style="color:var(--green)">110g</div><div class="macro-label">Protein daily</div></div>
+      <div class="macro-card"><div class="macro-val" style="color:var(--lime-text)">210g</div><div class="macro-label">Carbs daily</div></div>
+      <div class="macro-card"><div class="macro-val" style="color:var(--yellow-dark)">60g</div><div class="macro-label">Fats daily</div></div>
+      <div class="macro-card"><div class="macro-val" style="color:var(--ink-light)">100 lbs</div><div class="macro-label">Body weight</div></div>
+    </div>
+    <div class="tip-card"><h4>Why a slight surplus?</h4><p>At 100 lbs / 5'2", maintenance is roughly 1,600–1,750 cal/day with 3× weekly training. To actually build glute muscle you need to eat slightly above that. Cutting while trying to grow glutes = very slow results. A 200–300 calorie surplus is the sweet spot — enough to build without gaining excess fat.</p></div>
+    <div class="tip-card" style="margin-top:8px"><h4>No-meat months</h4><p>On no-meat months, prioritise: eggs, Greek yogurt, cottage cheese, tofu, tempeh, lentils, chickpeas, edamame, quinoa (complete protein), and protein powder. The goal is still 110g protein daily — it just takes more planning without meat. The Meal Ideas tab has options for both.</p></div>
+    <div class="tip-card" style="margin-top:8px"><h4>Creatine monohydrate — 3–5g daily</h4><p>The single most evidence-backed supplement available. Mix into any drink, any time of day. Takes 2–3 weeks to fully load. Increases strength, power, and muscle volume. Completely safe, no loading phase needed. Works equally well on no-meat months.</p></div>
+    <div class="tip-card" style="margin-top:8px"><h4>Hydration</h4><p>Aim for at least 80–100 oz of water daily. Dehydration shows up as reduced strength and poor muscle pump. Add electrolytes (pinch of salt, some fruit juice) after sweaty sessions.</p></div>
+    <div class="collapsible-header" onclick="toggleCollapsible(this)" style="margin-top:14px">
+      <h4>Protein Tips</h4>
+      <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+    <div class="collapsible-body">
+      <div class="tip-card" style="border-radius:0 0 var(--radius-sm) var(--radius-sm);margin-bottom:0">
+        <h4>Hit 110g protein daily — non-negotiable</h4>
+        <p>Protein is the direct building block for glute muscle. Spread across 3–4 meals with 25–35g per meal. Best meat sources: chicken breast, eggs, salmon, tuna, lean beef, Greek yogurt, cottage cheese. Best no-meat sources: tofu, tempeh, edamame, lentils, chickpeas, cottage cheese, eggs, Greek yogurt, protein powder.</p>
+      </div>
+      <div class="tip-card" style="border-radius:0;margin-bottom:0;border-top:1px solid var(--border)">
+        <h4>Don't fear carbs</h4>
+        <p>Carbs fuel workouts and replenish muscle glycogen for recovery. Rice, oats, sweet potato, fruit, whole wheat bread — all great. Eat more carbs on training days, slightly less on rest days.</p>
+      </div>
+      <div class="tip-card" style="border-radius:0 0 var(--radius-sm) var(--radius-sm);margin-bottom:8px;border-top:1px solid var(--border)">
+        <h4>Protein timing</h4>
+        <p>Try to get 25–35g protein within 1–2 hours after training. This doesn't have to be a shake — any high-protein meal counts. Consistency across the whole day matters more than timing.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Meal Ideas -->
+  <div id="nut-meals" class="phase-content">
+    <p style="font-size:13px;color:var(--ink-light);margin-bottom:12px;line-height:1.6">Tap any meal to expand ingredients. Both meat and no-meat options included throughout.</p>
+
+    <div class="recipe-section" id="rs-breakfast">
+      <div class="recipe-header" onclick="toggleRecipe('rs-breakfast')">
+        <div class="recipe-header-left"><span class="recipe-icon">🌅</span><div><h4>Breakfast</h4><p>6 options — tap to expand</p></div></div>
+        <svg class="recipe-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="recipe-body">
+        <div class="meal-option" onclick="toggleMealDetail(this)">
+          <div class="meal-option-top"><h5>Scrambled Eggs + Toast</h5><span class="meal-tag tag-meat">🥚 Eggs</span></div>
+          <p>3 eggs scrambled, 2 slices whole wheat toast, sliced avocado</p>
+          <p class="meal-macros">~480 cal · 28g protein · 38g carbs · 20g fat</p>
+          <div class="meal-ingredients"><strong>Ingredients</strong><br>3 large eggs · 2 slices whole wheat bread · ½ avocado · salt, pepper, olive oil spray</div>
+        </div>
+        <div class="meal-option" onclick="toggleMealDetail(this)">
+          <div class="meal-option-top"><h5>Greek Yogurt Protein Bowl</h5><span class="meal-tag tag-nomeat">🌿 No-Meat</span></div>
+          <p>Full-fat Greek yogurt, mixed berries, granola, drizzle of honey, 1 scoop protein powder stirred in</p>
+          <p class="meal-macros">~450 cal · 35g protein · 50g carbs · 10g fat</p>
+          <div class="meal-ingredients"><strong>Ingredients</strong><br>1 cup full-fat Greek yogurt · ½ cup mixed berries · ¼ cup granola · 1 tsp honey · 1 scoop vanilla protein powder</div>
+        </div>
+        <div class="meal-option" onclick="toggleMealDetail(this)">
+          <div class="meal-option-top"><h5>Cottage Cheese Pancakes</h5><span class="meal-tag tag-nomeat">🌿 No-Meat</span></div>
+          <p>Blended cottage cheese + eggs + oats + banana. High protein, naturally sweet</p>
+          <p class="meal-macros">~430 cal · 32g protein · 45g carbs · 12g fat</p>
+          <div class="meal-ingredients"><strong>Ingredients</strong><br>½ cup cottage cheese · 2 eggs · ½ cup rolled oats · 1 banana · pinch of cinnamon · maple syrup to serve</div>
+        </div>
+        <div class="meal-option" onclick="toggleMealDetail(this)">
+          <div class="meal-option-top"><h5>Turkey Bacon Egg Wrap</h5><span class="meal-tag tag-meat">🥩 Meat</span></div>
+          <p>Whole wheat tortilla, 2 turkey bacon strips, 2 scrambled eggs, spinach, hot sauce</p>
+          <p class="meal-macros">~480 cal · 34g protein · 38g carbs · 14g fat</p>
+          <div class="meal-ingredients"><strong>Ingredients</strong><br>1 large whole wheat tortilla · 2 strips turkey bacon · 2 eggs · handful fresh spinach · hot sauce · olive oil spray</div>
+        </div>
+        <div class="meal-option" onclick="toggleMealDetail(this)">
+          <div class="meal-option-top"><h5>Overnight Oats (High Protein)</h5><span class="meal-tag tag-nomeat">🌿 No-Meat</span></div>
+          <p>Oats soaked overnight in milk with protein powder, chia seeds, peanut butter</p>
+          <p class="meal-macros">~500 cal · 32g protein · 55g carbs · 15g fat</p>
+          <div class="meal-ingredients"><strong>Ingredients</strong><br>½ cup rolled oats · ¾ cup milk (any) · 1 scoop protein powder · 1 tbsp chia seeds · 1 tbsp peanut butter · drizzle of maple syrup</div>
+        </div>
+        <div class="meal-option" onclick="toggleMealDetail(this)">
+          <div class="meal-option-top"><h5>Tofu Scramble + Toast</h5><span class="meal-tag tag-nomeat">🌿 Vegan</span></div>
+          <p>Firm tofu crumbled and cooked with turmeric, nutritional yeast, peppers, spinach</p>
+          <p class="meal-macros">~420 cal · 28g protein · 35g carbs · 16g fat</p>
+          <div class="meal-ingredients"><strong>Ingredients</strong><br>200g firm tofu (crumbled) · ½ tsp turmeric · 1 tbsp nutritional yeast · ½ bell pepper · handful spinach · 2 slices whole wheat toast · olive oil</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="recipe-section" id="rs-lunch">
+      <div class="recipe-header" onclick="toggleRecipe('rs-lunch')">
+        <div class="recipe-header-left"><span class="recipe-icon">☀️</span><div><h4>Lunch</h4><p>6 options — tap to expand</p></div></div>
+        <svg class="recipe-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="recipe-body">
+        <div class="meal-option" onclick="toggleMealDetail(this)">
+          <div class="meal-option-top"><h5>Grilled Chicken Wrap</h5><span class="meal-tag tag-meat">🥩 Meat</span></div>
+          <p>4 oz grilled chicken, whole wheat tortilla, romaine, tomato, Greek yogurt dressing</p>
+          <p class="meal-macros">~500 cal · 38g protein · 45g carbs · 12g fat</p>
+          <div class="meal-ingredients"><strong>Ingredients</strong><br>4 oz chicken breast · 1 whole wheat tortilla · romaine lettuce · 1 tomato · 2 tbsp Greek yogurt · garlic powder, salt, pepper, lemon</div>
+        </div>
+        <div class="meal-option" onclick="toggleMealDetail(this)">
+          <div class="meal-option-top"><h5>Lentil + Roasted Veggie Bowl</h5><span class="meal-tag tag-nomeat">🌿 Vegan</span></div>
+          <p>Green lentils, roasted sweet potato, zucchini, chickpeas, tahini dressing, fresh lemon</p>
+          <p class="meal-macros">~520 cal · 25g protein · 72g carbs · 14g fat</p>
+          <div class="meal-ingredients"><strong>Ingredients</strong><br>½ cup dry lentils (cooked) · 1 cup roasted sweet potato cubes · ½ zucchini · ½ cup canned chickpeas · 2 tbsp tahini · lemon juice · olive oil · cumin, paprika</div>
+        </div>
+        <div class="meal-option" onclick="toggleMealDetail(this)">
+          <div class="meal-option-top"><h5>Tuna + Rice Bowl</h5><span class="meal-tag tag-meat">🐟 Fish</span></div>
+          <p>Canned tuna over white rice, edamame, cucumber, sesame dressing, pickled ginger</p>
+          <p class="meal-macros">~520 cal · 40g protein · 58g carbs · 10g fat</p>
+          <div class="meal-ingredients"><strong>Ingredients</strong><br>1 can tuna in water · 1 cup cooked white rice · ½ cup shelled edamame · ½ cucumber · 1 tbsp soy sauce · 1 tsp sesame oil · pickled ginger</div>
+        </div>
+        <div class="meal-option" onclick="toggleMealDetail(this)">
+          <div class="meal-option-top"><h5>Black Bean + Quinoa Bowl</h5><span class="meal-tag tag-nomeat">🌿 Vegan</span></div>
+          <p>Quinoa base, black beans, corn, avocado, salsa, lime. Complete protein from quinoa + beans</p>
+          <p class="meal-macros">~510 cal · 24g protein · 68g carbs · 14g fat</p>
+          <div class="meal-ingredients"><strong>Ingredients</strong><br>½ cup dry quinoa (cooked) · ½ cup canned black beans · ½ cup corn · ½ avocado · ¼ cup salsa · lime juice · cumin, chili powder</div>
+        </div>
+        <div class="meal-option" onclick="toggleMealDetail(this)">
+          <div class="meal-option-top"><h5>Ground Turkey Rice Bowl</h5><span class="meal-tag tag-meat">🥩 Meat</span></div>
+          <p>Seasoned ground turkey over brown rice with steamed broccoli, teriyaki drizzle</p>
+          <p class="meal-macros">~530 cal · 42g protein · 52g carbs · 14g fat</p>
+          <div class="meal-ingredients"><strong>Ingredients</strong><br>4 oz lean ground turkey · 1 cup cooked brown rice · 1 cup broccoli florets · 1 tbsp teriyaki sauce · garlic, ginger, sesame oil</div>
+        </div>
+        <div class="meal-option" onclick="toggleMealDetail(this)">
+          <div class="meal-option-top"><h5>Egg + Hummus Grain Bowl</h5><span class="meal-tag tag-nomeat">🌿 No-Meat</span></div>
+          <p>Hard-boiled eggs on farro or bulgur, big scoop hummus, roasted red peppers, cucumber, lemon</p>
+          <p class="meal-macros">~490 cal · 28g protein · 52g carbs · 18g fat</p>
+          <div class="meal-ingredients"><strong>Ingredients</strong><br>2 hard-boiled eggs · ¾ cup cooked farro · 3 tbsp hummus · roasted red peppers · ½ cucumber · lemon juice · olive oil · za'atar</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="recipe-section" id="rs-dinner">
+      <div class="recipe-header" onclick="toggleRecipe('rs-dinner')">
+        <div class="recipe-header-left"><span class="recipe-icon">🌙</span><div><h4>Dinner</h4><p>6 options — tap to expand</p></div></div>
+        <svg class="recipe-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="recipe-body">
+        <div class="meal-option" onclick="toggleMealDetail(this)">
+          <div class="meal-option-top"><h5>Baked Salmon + Sweet Potato</h5><span class="meal-tag tag-meat">🐟 Fish</span></div>
+          <p>6 oz salmon fillet, 7 oz baked sweet potato, roasted asparagus, olive oil drizzle</p>
+          <p class="meal-macros">~580 cal · 40g protein · 55g carbs · 18g fat</p>
+          <div class="meal-ingredients"><strong>Ingredients</strong><br>6 oz salmon fillet · 1 medium sweet potato · 1 bunch asparagus · 1 tbsp olive oil · garlic, lemon, salt, pepper · optional: dill</div>
+        </div>
+        <div class="meal-option" onclick="toggleMealDetail(this)">
+          <div class="meal-option-top"><h5>Tempeh Stir-Fry + Rice</h5><span class="meal-tag tag-nomeat">🌿 Vegan</span></div>
+          <p>Pan-fried tempeh, broccoli, snap peas, carrots, ginger-soy sauce, brown rice</p>
+          <p class="meal-macros">~560 cal · 32g protein · 65g carbs · 18g fat</p>
+          <div class="meal-ingredients"><strong>Ingredients</strong><br>6 oz tempeh (cubed) · 1 cup broccoli · ½ cup snap peas · 1 carrot · 2 tbsp soy sauce · 1 tsp sesame oil · fresh ginger + garlic · 1 cup cooked brown rice</div>
+        </div>
+        <div class="meal-option" onclick="toggleMealDetail(this)">
+          <div class="meal-option-top"><h5>Chicken + Roasted Veggies</h5><span class="meal-tag tag-meat">🥩 Meat</span></div>
+          <p>Baked chicken breast, roasted broccoli and sweet potato, light olive oil, garlic</p>
+          <p class="meal-macros">~530 cal · 45g protein · 48g carbs · 14g fat</p>
+          <div class="meal-ingredients"><strong>Ingredients</strong><br>6 oz chicken breast · 1 cup broccoli florets · 1 medium sweet potato · 1 tbsp olive oil · garlic powder, paprika, Italian seasoning, salt</div>
+        </div>
+        <div class="meal-option" onclick="toggleMealDetail(this)">
+          <div class="meal-option-top"><h5>Chickpea + Spinach Curry</h5><span class="meal-tag tag-nomeat">🌿 Vegan</span></div>
+          <p>Canned chickpeas in a spiced tomato-coconut sauce, wilted spinach, basmati rice</p>
+          <p class="meal-macros">~570 cal · 22g protein · 78g carbs · 16g fat</p>
+          <div class="meal-ingredients"><strong>Ingredients</strong><br>1 can chickpeas · 1 can diced tomatoes · ¼ can coconut milk · 2 cups spinach · 1 cup cooked basmati rice · cumin, garam masala, turmeric, ginger, garlic, onion</div>
+        </div>
+        <div class="meal-option" onclick="toggleMealDetail(this)">
+          <div class="meal-option-top"><h5>Ground Turkey Pasta</h5><span class="meal-tag tag-meat">🥩 Meat</span></div>
+          <p>Lean ground turkey, whole wheat pasta, marinara, zucchini, parmesan</p>
+          <p class="meal-macros">~570 cal · 42g protein · 60g carbs · 14g fat</p>
+          <div class="meal-ingredients"><strong>Ingredients</strong><br>4 oz lean ground turkey · 2 oz dry whole wheat pasta · ½ cup marinara · ½ zucchini · 1 tbsp parmesan · garlic, onion, Italian seasoning</div>
+        </div>
+        <div class="meal-option" onclick="toggleMealDetail(this)">
+          <div class="meal-option-top"><h5>Tofu + Edamame Noodle Bowl</h5><span class="meal-tag tag-nomeat">🌿 Vegan</span></div>
+          <p>Baked crispy tofu, edamame, soba noodles, cucumber, peanut-sesame dressing</p>
+          <p class="meal-macros">~540 cal · 30g protein · 62g carbs · 20g fat</p>
+          <div class="meal-ingredients"><strong>Ingredients</strong><br>6 oz extra-firm tofu (baked) · ½ cup shelled edamame · 2 oz dry soba noodles · ½ cucumber · 2 tbsp peanut butter · 1 tbsp soy sauce · sesame oil, rice vinegar, garlic, chili flakes</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="recipe-section" id="rs-snacks">
+      <div class="recipe-header" onclick="toggleRecipe('rs-snacks')">
+        <div class="recipe-header-left"><span class="recipe-icon">🍎</span><div><h4>Snacks</h4><p>6 options — tap to expand</p></div></div>
+        <svg class="recipe-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="recipe-body">
+        <div class="meal-option" onclick="toggleMealDetail(this)">
+          <div class="meal-option-top"><h5>Greek Yogurt + Berries</h5><span class="meal-tag tag-nomeat">🌿 No-Meat</span></div>
+          <p>Full-fat Greek yogurt with mixed berries and a drizzle of honey</p>
+          <p class="meal-macros">~200 cal · 15g protein · 22g carbs · 5g fat</p>
+          <div class="meal-ingredients"><strong>Ingredients</strong><br>5 oz full-fat Greek yogurt · ½ cup mixed berries · 1 tsp honey</div>
+        </div>
+        <div class="meal-option" onclick="toggleMealDetail(this)">
+          <div class="meal-option-top"><h5>Cottage Cheese + Pineapple</h5><span class="meal-tag tag-nomeat">🌿 No-Meat</span></div>
+          <p>High protein, naturally sweet. Great post-workout or evening snack</p>
+          <p class="meal-macros">~180 cal · 18g protein · 18g carbs · 3g fat</p>
+          <div class="meal-ingredients"><strong>Ingredients</strong><br>½ cup low-fat cottage cheese · ½ cup diced fresh or canned pineapple</div>
+        </div>
+        <div class="meal-option" onclick="toggleMealDetail(this)">
+          <div class="meal-option-top"><h5>Hard-Boiled Eggs + Apple</h5><span class="meal-tag tag-nomeat">🌿 No-Meat</span></div>
+          <p>2 hard-boiled eggs and a medium apple. Protein + fiber + natural sugar = solid energy</p>
+          <p class="meal-macros">~230 cal · 14g protein · 25g carbs · 10g fat</p>
+          <div class="meal-ingredients"><strong>Ingredients</strong><br>2 hard-boiled eggs · 1 medium apple · pinch of sea salt</div>
+        </div>
+        <div class="meal-option" onclick="toggleMealDetail(this)">
+          <div class="meal-option-top"><h5>Turkey Roll-Ups</h5><span class="meal-tag tag-meat">🥩 Meat</span></div>
+          <p>Sliced deli turkey rolled with cream cheese and cucumber strips. Easy, portable</p>
+          <p class="meal-macros">~200 cal · 22g protein · 5g carbs · 10g fat</p>
+          <div class="meal-ingredients"><strong>Ingredients</strong><br>3 oz deli turkey slices · 1 tbsp light cream cheese · ¼ cucumber (sliced into strips)</div>
+        </div>
+        <div class="meal-option" onclick="toggleMealDetail(this)">
+          <div class="meal-option-top"><h5>Edamame + Soy Salt</h5><span class="meal-tag tag-nomeat">🌿 Vegan</span></div>
+          <p>Frozen edamame steamed in 3 minutes. One of the best complete plant proteins</p>
+          <p class="meal-macros">~190 cal · 17g protein · 14g carbs · 8g fat</p>
+          <div class="meal-ingredients"><strong>Ingredients</strong><br>1 cup shelled frozen edamame (steamed) · pinch of sea salt · optional: chili flakes</div>
+        </div>
+        <div class="meal-option" onclick="toggleMealDetail(this)">
+          <div class="meal-option-top"><h5>Protein Shake + Banana</h5><span class="meal-tag tag-nomeat">🌿 No-Meat</span></div>
+          <p>Any protein powder mixed with milk or water, paired with a banana. Classic post-workout</p>
+          <p class="meal-macros">~280 cal · 28g protein · 32g carbs · 4g fat</p>
+          <div class="meal-ingredients"><strong>Ingredients</strong><br>1 scoop protein powder · 1 cup milk or oat milk · 1 medium banana</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Meal Log -->
+  <div id="nut-log" class="phase-content">
+    <div class="week-tabs" id="log-week-tabs"></div>
+    <div class="copy-week-bar">
+      <span>Copy week to:</span>
+      <select id="copy-to-select"></select>
+      <button onclick="copyWeek()">Copy</button>
+    </div>
+    <div id="log-body"></div>
+    <button class="add-meal-btn" onclick="openAddDayModal()" style="margin-bottom:10px">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      Add custom meal entry
     </button>
-    <button class="nav-btn" onclick="showScreen('workouts',this)">
-      <svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
-      <span>Workouts</span>
-    </button>
-    <button class="nav-btn" onclick="showScreen('nutrition',this)">
-      <svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v5a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="2" x2="6" y2="6"/><line x1="12" y1="2" x2="12" y2="6"/></svg>
-      <span>Nutrition</span>
-    </button>
-    <button class="nav-btn" onclick="showScreen('equipment',this)">
-      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-      <span>Gear</span>
-    </button>
-    <button class="nav-btn" onclick="showScreen('progress',this)">
-      <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-      <span>Progress</span>
-    </button>
-  </nav>
+  </div>
+
+  <!-- Shopping List -->
+  <div id="nut-shop" class="phase-content">
+    <div class="week-tabs" id="shop-week-tabs"></div>
+    <div style="display:flex;gap:8px;margin-bottom:10px">
+      <button onclick="generateShopList()" class="btn-primary" style="flex:1;padding:10px;font-size:13px">Generate shopping list</button>
+      <button onclick="clearChecked()" class="btn-secondary" style="flex:1;padding:10px;font-size:13px">Clear checked</button>
+    </div>
+    <div id="shop-list-body"></div>
+  </div>
+</div>
+
+<!-- EQUIPMENT -->
+<div id="screen-equipment" class="screen">
+  <div class="section-title">Already Owned ✓</div>
+  <div class="equip-card equip-already"><h3>2 × 10 lb Dumbbells</h3><p>Sufficient for weeks 1–4 on most exercises. Becomes limiting on hip thrusts and RDLs by week 5.</p></div>
+  <div class="equip-card equip-already"><h3>Resistance Bands (some)</h3><p>Good start. More bands with varied resistance levels will be needed as the program progresses — see recommendations below.</p></div>
+  <div class="equip-card equip-already"><h3>Couch / Sturdy Chair</h3><p>Works perfectly as a hip thrust bench and rear foot elevation for Bulgarian split squats.</p></div>
+  <div class="section-title">Band Upgrade — Recommended</div>
+  <div class="equip-card">
+    <h3>Additional Resistance Bands (Loop Set) <span class="equip-priority pri-must">GET SOON</span></h3>
+    <div class="price">~$15–25 for a full set</div>
+    <p>Having light, medium, heavy, and extra-heavy bands is key for progressive overload on donkey kicks, fire hydrants, clam shells, hip thrusts, and side steps. If the current bands are light/medium, a heavy and extra-heavy will be needed by weeks 3–4. If current bands are heavy, grab a light set for warm-ups and isolation work.</p>
+    <div class="pill-row"><span class="badge badge-lime">Donkey Kicks</span><span class="badge badge-lime">Fire Hydrants</span><span class="badge badge-lime">Hip Thrusts</span><span class="badge badge-lime">Side Steps</span><span class="badge badge-lime">Clam Shells</span></div>
+  </div>
+  <div class="section-title">Priority 1 — Buy Before or Week 1</div>
+  <div class="equip-card"><h3>Exercise Mat <span class="equip-priority pri-must">MUST HAVE</span></h3><div class="price">~$15–20</div><p>Hip thrusts, donkey kicks, fire hydrants, and floor ab work are very uncomfortable on hard floors. At least 6mm thickness.</p></div>
+  <div class="section-title">Priority 2 — Buy by Week 5</div>
+  <div class="equip-card"><h3>Heavier Dumbbell(s) — 20–25 lb <span class="equip-priority pri-soon">BY WEEK 5</span></h3><div class="price">~$25–50 single / $60–120 pair</div><p>Progress will stall on hip thrusts and RDLs without heavier weight. A single 25 lb DB covers hip thrusts well. A pair opens up more bilateral movements.</p></div>
+  <div class="equip-card"><h3>Ankle Weights (5–10 lb set) <span class="equip-priority pri-soon">BY WEEK 5</span></h3><div class="price">~$20–35</div><p>Adds meaningful resistance to donkey kicks and fire hydrants without needing a band anchor. Great for increasing intensity on floor exercises that drive glute medius growth.</p></div>
+  <div class="section-title">Optional — Later</div>
+  <div class="equip-card"><h3>Adjustable Dumbbell Set <span class="equip-priority pri-later">OPTIONAL</span></h3><div class="price">~$100–200</div><p>PowerBlock or Bowflex style. Covers 5–50 lb in one unit — worth it for long-term training.</p></div>
+  <div class="equip-card"><h3>Hip Thrust Pad / Barbell Pad <span class="equip-priority pri-later">OPTIONAL</span></h3><div class="price">~$15–25</div><p>If DBs dig into the hip crease during thrusts. A folded towel works in the meantime.</p></div>
+</div>
+
+<!-- PROGRESS -->
+<div id="screen-progress" class="screen">
+  <div class="prog-hero">
+    <h3 style="font-size:15px;font-weight:600;margin-bottom:6px">Baseline Measurements</h3>
+    <p style="font-size:13px;color:var(--ink-light);margin-bottom:12px">Glute circumference baseline: <strong>31 inches</strong>. Re-measure at end of week 4 and week 8.</p>
+    <div class="prog-bar-wrap">
+      <div class="prog-bar-label"><span>Program start</span><span>Week 8 goal</span></div>
+      <div class="prog-bar"><div class="prog-bar-fill" id="bar-fill"></div></div>
+      <p style="font-size:11px;color:var(--ink-pale);margin-top:4px">Realistic: 0.5–1 inch gain by week 8 with consistent nutrition and training</p>
+    </div>
+  </div>
+  <div class="section-title">How to Measure Correctly</div>
+  <div class="rule-card"><h4>📏 Glute Circumference</h4><p>Measure at the widest point of the glutes. Tape parallel to the floor. Measure relaxed (not flexed). Always same time of day — morning is most consistent. Same spot every time.</p></div>
+  <div class="rule-card"><h4>📸 Progress Photos</h4><p>Same lighting, angle (front, side, back), time of day, every 2 weeks. Photos reveal changes that scale and tape miss — particularly shape shifts.</p></div>
+  <div class="rule-card"><h4>⚖️ Scale Weight</h4><p>Expect slow gain — 0.5–1 lb per month is ideal for lean muscle. Scale fluctuates daily with water and food. Track weekly averages. Weigh morning after bathroom, before eating.</p></div>
+  <div class="rule-card"><h4>📓 Workout Log</h4><p>Log every session: exercise, sets, reps, weight used. Numbers going up = progress. If they stall for 3+ sessions, something needs to change (usually nutrition or sleep).</p></div>
+  <div class="section-title">Progressive Overload Rules</div>
+  <div class="tip-card"><h4>When to increase load</h4><p>When completing all sets with 2+ reps to spare comfortably, go heavier. Don't add reps indefinitely — go up in resistance. On hip thrust, expect to increase every 2–3 weeks minimum if nutrition is right.</p></div>
+  <div class="tip-card"><h4>When you don't have heavier weights</h4><p>Slow the tempo (3-sec lower). Add a pause at the hardest point. Use heavier band. Reduce rest time. Add reps. Superset two exercises. All increase difficulty without needing more weight.</p></div>
+  <div class="section-title">Red Flags to Watch</div>
+  <div class="warning-card"><h4>⚠️ Lower back pain during RDL or hip thrust</h4><p>Stop the exercise. Likely cause: rounding spine (RDL) or hyperextending at top (hip thrust). Lower weight, review form. Pain ≠ effort.</p></div>
+  <div class="warning-card"><h4>⚠️ Knees caving inward on squats</h4><p>Reduce weight immediately. Add band above knees to cue abductors. Heavy stress on the knee joint — correct before loading up.</p></div>
+  <div class="warning-card"><h4>⚠️ No strength gain by week 4</h4><p>Almost always nutrition. Check calories — likely undereating and not recovering. Increase food, especially protein and carbs.</p></div>
+  <div class="warning-card"><h4>⚠️ Feeling flat and fatigued every session</h4><p>If 3+ sessions feel terrible, take a deload week — 50% volume, light loads. Recovery is when muscle actually grows.</p></div>
+  <div class="warning-card"><h4>⚠️ No glute activation — feeling it in quads only</h4><p>Do 10 slow BW glute bridges squeezing hard at top before each exercise. Pre-activating the glute helps the brain recruit it during heavier movements.</p></div>
+  <div class="section-title">Sleep & Recovery</div>
+  <div class="rule-card"><h4>😴 Sleep is where muscle is built</h4><p>Aim for 7–9 hours. Muscle is built during sleep when growth hormone is released. Poor sleep = poor gains regardless of training effort. Non-negotiable.</p></div>
+  <div class="rule-card"><h4>🚶 Active rest days</h4><p>Walk, stretch, yoga, or light mobility on rest days. 20–30 minutes of easy movement improves recovery and reduces soreness for the next session.</p></div>
+</div>
+
+</div><!-- end content -->
+
+<nav class="bottom-nav">
+  <button class="nav-btn active" onclick="showScreen('home',this)">
+    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    <span>Home</span>
+  </button>
+  <button class="nav-btn" onclick="showScreen('workouts',this)">
+    <svg viewBox="0 0 24 24"><path d="M6 4v16M18 4v16M3 8h18M3 16h18" stroke-linecap="round"/></svg>
+    <span>Workouts</span>
+  </button>
+  <button class="nav-btn" onclick="showScreen('nutrition',this)">
+    <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path d="M12 6v6l4 2"/></svg>
+    <span>Nutrition</span>
+  </button>
+  <button class="nav-btn" onclick="showScreen('equipment',this)">
+    <svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="2"/><circle cx="19" cy="12" r="2"/><path d="M7 12h10"/><path d="M2 12h1M21 12h1"/></svg>
+    <span>Gear</span>
+  </button>
+  <button class="nav-btn" onclick="showScreen('progress',this)">
+    <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+    <span>Progress</span>
+  </button>
+</nav>
+</div>
+
+<!-- ADD MEAL MODAL -->
+<div class="modal-backdrop" id="modal-backdrop">
+  <div class="modal">
+    <h3>Add Meal Entry</h3>
+    <label>Week</label>
+    <select id="m-week"></select>
+    <label>Day</label>
+    <select id="m-day">
+      <option>Monday</option><option>Tuesday</option><option>Wednesday</option>
+      <option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option>
+    </select>
+    <label>Meal slot</label>
+    <select id="m-slot">
+      <option value="breakfast">Breakfast</option>
+      <option value="lunch">Lunch</option>
+      <option value="dinner">Dinner</option>
+      <option value="snack">Snack</option>
+    </select>
+    <label>Meal name</label>
+    <input id="m-name" type="text" placeholder="e.g. Chicken rice bowl">
+    <label>Calories (optional)</label>
+    <input id="m-cals" type="number" placeholder="e.g. 520">
+    <label>Ingredients (optional)</label>
+    <textarea id="m-ing" placeholder="e.g. 4 oz chicken, 1 cup rice, broccoli..."></textarea>
+    <div class="modal-actions">
+      <button class="btn-secondary" onclick="closeModal()">Cancel</button>
+      <button class="btn-primary" onclick="saveEntry()">Save</button>
+    </div>
+  </div>
 </div>
 
 <script>
-function showScreen(name, btn) {
-  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('screen-' + name).classList.add('active');
+// ── State ──────────────────────────────────────────────
+const WEEKS = 8;
+const DAYS = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+const SLOTS = ['breakfast','lunch','dinner','snack'];
+const SLOT_LABELS = {breakfast:'🌅 Breakfast',lunch:'☀️ Lunch',dinner:'🌙 Dinner',snack:'🍎 Snacks'};
+
+let currentLogWeek = 1;
+let currentShopWeek = 1;
+let nutTab = 'overview';
+
+// Storage
+function load(){try{return JSON.parse(localStorage.getItem('gg_data'))||{logs:{},shop:{}};}catch(e){return{logs:{},shop:{}};}}
+function save(d){localStorage.setItem('gg_data',JSON.stringify(d));}
+let DB = load();
+if(!DB.logs) DB.logs={};
+if(!DB.shop) DB.shop={};
+
+// ── Navigation ─────────────────────────────────────────
+function showScreen(name,btn){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('screen-'+name).classList.add('active');
   btn.classList.add('active');
-  document.querySelector('.content').scrollTop = 0;
+  document.querySelector('.content').scrollTop=0;
 }
-function switchPhase(id, btn) {
-  document.querySelectorAll('.phase-content').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.phase-tab').forEach(t => t.classList.remove('active'));
+function switchPhase(id,btn){
+  document.querySelectorAll('.phase-content').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.phase-tab').forEach(t=>t.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   btn.classList.add('active');
 }
-function toggleDay(card) {
-  card.classList.toggle('open');
+function toggleDay(card){card.classList.toggle('open');}
+function toggleCollapsible(h){
+  h.classList.toggle('open');
+  const b=h.nextElementSibling;
+  b.classList.toggle('open');
 }
-setTimeout(() => {
-  const fill = document.getElementById('bar-fill');
-  if (fill) fill.style.width = '12%';
-}, 500);
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('sw.js').catch(() => {});
+function toggleRecipe(id){
+  const s=document.getElementById(id);
+  s.classList.toggle('open');
 }
+function toggleMealDetail(el){
+  const ing=el.querySelector('.meal-ingredients');
+  if(ing) ing.classList.toggle('open');
+}
+
+// ── Nutrition tabs ─────────────────────────────────────
+function switchNutTab(tab,btn){
+  nutTab=tab;
+  document.querySelectorAll('#screen-nutrition .phase-tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('#screen-nutrition .phase-content').forEach(p=>p.classList.remove('active'));
+  document.getElementById('nut-'+tab).classList.add('active');
+  if(tab==='log') renderLogWeekTabs();
+  if(tab==='shop'){renderShopWeekTabs();renderShopList();}
+}
+
+// ── Week tab renderers ─────────────────────────────────
+function renderWeekTabs(containerId, current, setter){
+  const c=document.getElementById(containerId);
+  c.innerHTML='';
+  for(let w=1;w<=WEEKS;w++){
+    const b=document.createElement('div');
+    b.className='week-tab'+(w===current?' active':'');
+    b.textContent='Week '+w;
+    b.onclick=()=>{setter(w);b.parentNode.querySelectorAll('.week-tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');};
+    c.appendChild(b);
+  }
+}
+function renderLogWeekTabs(){
+  renderWeekTabs('log-week-tabs',currentLogWeek,(w)=>{currentLogWeek=w;renderLogBody();updateCopySelect();});
+  renderLogBody();
+  updateCopySelect();
+}
+function renderShopWeekTabs(){
+  renderWeekTabs('shop-week-tabs',currentShopWeek,(w)=>{currentShopWeek=w;renderShopList();});
+}
+function updateCopySelect(){
+  const sel=document.getElementById('copy-to-select');
+  sel.innerHTML='';
+  for(let w=1;w<=WEEKS;w++){
+    if(w===currentLogWeek) continue;
+    const o=document.createElement('option');
+    o.value=w;o.textContent='Week '+w;
+    sel.appendChild(o);
+  }
+}
+
+// ── Log body ────────────────────────────────────────────
+function getLogKey(week,day,slot){return week+'|'+day+'|'+slot;}
+function renderLogBody(){
+  const body=document.getElementById('log-body');
+  body.innerHTML='';
+  DAYS.forEach(day=>{
+    const card=document.createElement('div');
+    card.className='meal-log-day';
+    const hdr=document.createElement('div');
+    hdr.className='meal-log-day-header';
+    hdr.innerHTML='<h4>'+day+'</h4><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9a9a7a" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>';
+    hdr.onclick=()=>card.classList.toggle('open');
+    const bdy=document.createElement('div');
+    bdy.className='meal-log-day-body';
+    SLOTS.forEach(slot=>{
+      const slotDiv=document.createElement('div');
+      slotDiv.className='log-slot';
+      slotDiv.innerHTML='<div class="log-slot-label">'+SLOT_LABELS[slot]+'</div>';
+      const key=getLogKey(currentLogWeek,day,slot);
+      const entries=(DB.logs[key]||[]);
+      entries.forEach((e,i)=>{
+        const row=document.createElement('div');
+        row.className='log-entry';
+        row.innerHTML='<span class="log-entry-name">'+e.name+'</span>'
+          +(e.cals?'<span class="log-entry-cals">'+e.cals+' cal</span>':'')
+          +'<button class="log-entry-del" onclick="deleteEntry(\''+key+'\','+i+')">×</button>';
+        slotDiv.appendChild(row);
+      });
+      const addBtn=document.createElement('button');
+      addBtn.className='add-meal-btn';
+      addBtn.innerHTML='<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Add '+slot;
+      addBtn.onclick=()=>openAddModal(currentLogWeek,day,slot);
+      slotDiv.appendChild(addBtn);
+      bdy.appendChild(slotDiv);
+    });
+    card.appendChild(hdr);
+    card.appendChild(bdy);
+    body.appendChild(card);
+  });
+}
+
+function deleteEntry(key,idx){
+  if(!DB.logs[key]) return;
+  DB.logs[key].splice(idx,1);
+  save(DB);
+  renderLogBody();
+}
+
+// ── Modal ───────────────────────────────────────────────
+function openAddModal(week,day,slot){
+  const wSel=document.getElementById('m-week');
+  wSel.innerHTML='';
+  for(let w=1;w<=WEEKS;w++){const o=document.createElement('option');o.value=w;o.textContent='Week '+w;if(w===week)o.selected=true;wSel.appendChild(o);}
+  document.getElementById('m-day').value=day||'Monday';
+  document.getElementById('m-slot').value=slot||'breakfast';
+  document.getElementById('m-name').value='';
+  document.getElementById('m-cals').value='';
+  document.getElementById('m-ing').value='';
+  document.getElementById('modal-backdrop').classList.add('open');
+}
+function openAddDayModal(){openAddModal(currentLogWeek,'Monday','breakfast');}
+function closeModal(){document.getElementById('modal-backdrop').classList.remove('open');}
+function saveEntry(){
+  const w=parseInt(document.getElementById('m-week').value);
+  const day=document.getElementById('m-day').value;
+  const slot=document.getElementById('m-slot').value;
+  const name=document.getElementById('m-name').value.trim();
+  if(!name){alert('Please enter a meal name');return;}
+  const cals=document.getElementById('m-cals').value;
+  const ing=document.getElementById('m-ing').value.trim();
+  const key=getLogKey(w,day,slot);
+  if(!DB.logs[key]) DB.logs[key]=[];
+  DB.logs[key].push({name,cals:cals?parseInt(cals):null,ing});
+  save(DB);
+  closeModal();
+  if(w===currentLogWeek) renderLogBody();
+}
+
+// ── Copy week ───────────────────────────────────────────
+function copyWeek(){
+  const toWeek=parseInt(document.getElementById('copy-to-select').value);
+  if(!toWeek) return;
+  const from=currentLogWeek;
+  let copied=0;
+  DAYS.forEach(day=>{
+    SLOTS.forEach(slot=>{
+      const fromKey=getLogKey(from,day,slot);
+      const toKey=getLogKey(toWeek,day,slot);
+      if(DB.logs[fromKey]&&DB.logs[fromKey].length>0){
+        DB.logs[toKey]=(DB.logs[toKey]||[]).concat(DB.logs[fromKey].map(e=>({...e})));
+        copied++;
+      }
+    });
+  });
+  save(DB);
+  alert('Copied '+(copied>0?'meals':'nothing (no meals logged in week '+from+')')+' from Week '+from+' to Week '+toWeek+'.');
+}
+
+// ── Shopping list ───────────────────────────────────────
+function generateShopList(){
+  const items={};
+  DAYS.forEach(day=>{
+    SLOTS.forEach(slot=>{
+      const key=getLogKey(currentShopWeek,day,slot);
+      (DB.logs[key]||[]).forEach(e=>{
+        if(e.ing){
+          e.ing.split(/[·,\n]/).forEach(i=>{
+            const clean=i.trim();
+            if(clean.length>1) items[clean]=(items[clean]||0)+1;
+          });
+        }
+      });
+    });
+  });
+  const shopKey='shop_'+currentShopWeek;
+  DB.shop[shopKey]=Object.keys(items).map(name=>({name,checked:false}));
+  save(DB);
+  renderShopList();
+}
+function renderShopList(){
+  const body=document.getElementById('shop-list-body');
+  const shopKey='shop_'+currentShopWeek;
+  const list=DB.shop[shopKey]||[];
+  if(list.length===0){
+    body.innerHTML='<div class="shop-section"><p class="shop-empty">No shopping list yet for Week '+currentShopWeek+'. Add meals in the Meal Log tab, then tap "Generate shopping list".</p></div>';
+    return;
+  }
+  const cats={Produce:[],Protein:[],Dairy:[],Grains:[],Other:[]};
+  const prodWords=['spinach','broccoli','cucumber','tomato','avocado','banana','apple','berries','zucchini','pepper','lemon','lime','garlic','onion','ginger','carrot','asparagus','pineapple','corn','sweet potato'];
+  const protWords=['chicken','turkey','tuna','salmon','eggs','egg','tofu','tempeh','lentil','chickpea','edamame','black bean','beef'];
+  const dairyWords=['yogurt','cottage','milk','cheese','cream'];
+  const grainWords=['rice','oats','pasta','bread','tortilla','quinoa','farro','bulgur','noodle','soba','granola'];
+  list.forEach(item=>{
+    const l=item.name.toLowerCase();
+    if(prodWords.some(w=>l.includes(w))) cats.Produce.push(item);
+    else if(protWords.some(w=>l.includes(w))) cats.Protein.push(item);
+    else if(dairyWords.some(w=>l.includes(w))) cats.Dairy.push(item);
+    else if(grainWords.some(w=>l.includes(w))) cats.Grains.push(item);
+    else cats.Other.push(item);
+  });
+  body.innerHTML='';
+  Object.entries(cats).forEach(([cat,items])=>{
+    if(!items.length) return;
+    const sec=document.createElement('div');
+    sec.className='shop-section';
+    sec.innerHTML='<h4>'+cat+'</h4>';
+    items.forEach((item,i)=>{
+      const globalIdx=list.indexOf(item);
+      const row=document.createElement('div');
+      row.className='shop-item';
+      const id='si_'+currentShopWeek+'_'+globalIdx;
+      row.innerHTML='<input type="checkbox" id="'+id+'"'+(item.checked?' checked':'')+'>'
+        +'<label id="lbl'+id+'" for="'+id+'"'+(item.checked?' class="checked"':'')+'>'+item.name+'</label>';
+      row.querySelector('input').onchange=(e)=>{
+        item.checked=e.target.checked;
+        row.querySelector('label').className=e.target.checked?'checked':'';
+        save(DB);
+      };
+      sec.appendChild(row);
+    });
+    body.appendChild(sec);
+  });
+}
+function clearChecked(){
+  const shopKey='shop_'+currentShopWeek;
+  if(DB.shop[shopKey]) DB.shop[shopKey]=DB.shop[shopKey].filter(i=>!i.checked);
+  save(DB);
+  renderShopList();
+}
+
+// ── Init ────────────────────────────────────────────────
+setTimeout(()=>{const f=document.getElementById('bar-fill');if(f)f.style.width='12%';},500);
+if('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(()=>{});
 </script>
 </body>
 </html>
